@@ -1,0 +1,5 @@
+{
+  "bundle": {
+    "macOS": { "files": { "MacOS/nurdiff-cli": "bundle-extra/nurdiff-cli" } }
+  }
+}

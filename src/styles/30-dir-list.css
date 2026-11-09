@@ -1,0 +1,209 @@
+/* --- Folder comparison list --- */
+
+.dir-list {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: var(--fs);
+}
+
+.dir-body {
+  flex: 1;
+  min-height: 0;
+}
+
+.vl-row {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.dir-row {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  font-size: var(--code-size, 13px);
+  line-height: 1;
+  cursor: default;
+}
+
+.dir-row.head {
+  height: auto;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: var(--fs);
+}
+
+.half {
+  display: grid;
+  grid-template-columns: 1fr 5.5rem 9.5rem;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  min-width: 0;
+}
+
+.dir-row.head .half {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.half + .half,
+.dir-mark + .half {
+  border-left: 1px solid var(--border);
+}
+
+/* Folder comparison: between the two sides a narrow column for the ≠ marker. */
+.dir-row.marked {
+  grid-template-columns: 1fr 3rem 1fr;
+}
+
+.dir-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--del-fg);
+  user-select: none;
+  border-left: 1px solid var(--border);
+}
+
+.dir-row.typeMismatch .dir-mark {
+  color: var(--mismatch);
+}
+
+/* "≈": different only in minor things (line ending, spaces, case, encoding): a warning colour, not an error one. */
+.dir-row.different.minor .dir-mark {
+  color: var(--chg-fg);
+}
+
+/* "=" of identical entries: grey and without a label, because in a folder most entries are equal. */
+.dir-row.identical .dir-mark {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* Icon of an entry: monochrome, always in the muted colour (the name keeps the status one). */
+.entry-icon {
+  flex: none;
+  vertical-align: -2px;
+  margin-right: 5px;
+  color: var(--muted);
+}
+
+.sb-item .entry-icon {
+  margin-right: -2px; /* the space is already given by the gap of the row */
+}
+
+/* The side where the entry does not exist. */
+.half.empty {
+  background: repeating-linear-gradient(135deg, transparent 0 6px, color-mix(in srgb, var(--fg) 7%, transparent) 6px 12px);
+}
+
+.dir-name {
+  font-family: var(--mono);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.twisty {
+  display: inline-block;
+  width: 1.3em;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  cursor: pointer;
+}
+
+.dir-size,
+.dir-date {
+  text-align: right;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Total of a folder (sum of the files): in italics and muted, to tell it from the size of a file. */
+.dir-size.total,
+.dir-row.different .dir-size.total {
+  font-style: italic;
+  color: var(--muted);
+}
+
+.dir-date.newer {
+  color: var(--del-fg);
+  font-weight: 600;
+}
+
+/*
+ * The status colour is on the marks (central column, icons, summary), not on the names: the names stay
+ * in the normal text colour, even for identical entries. The only exception, in the side-by-side view, are the entries
+ * present on one side only, which have no mark: the name is blue (only on the left) or purple (only on the right).
+ */
+.dir-row:not(.unified).leftOnly .dir-name {
+  color: var(--orphan);
+}
+
+.dir-row:not(.unified).rightOnly .dir-name {
+  color: var(--orphan-r);
+}
+
+.dir-row.stripe {
+  background: color-mix(in srgb, var(--fg) 4%, transparent);
+}
+
+.dir-row.selected {
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.dir-list:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.name-filter {
+  width: 11rem;
+}
+
+/* --- Dragging files or folders onto the window --- */
+
+.dropzone {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  pointer-events: none;
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+}
+
+.dropzone .zone {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  color: var(--muted);
+  font-size: 1.3rem;
+}
+
+.dropzone .zone.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.readonly {
+  color: var(--muted, #888);
+  font-style: normal;
+}
+

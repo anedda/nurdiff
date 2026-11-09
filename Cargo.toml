@@ -1,0 +1,18 @@
+[workspace]
+resolver = "2"
+members = ["crates/core", "crates/archive", "crates/cli", "src-tauri"]
+# `cargo build` / `cargo test` from the root compile only core and CLI:
+# the Tauri app needs the system libraries of the webview and is built with `npm run tauri build`.
+default-members = ["crates/core", "crates/archive", "crates/cli"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+authors = ["Valentino Anedda"]
+repository = "https://github.com/anedda/nurdiff"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true

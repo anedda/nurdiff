@@ -1,0 +1,220 @@
+name: Release
+
+# Builds the installers (Linux, Windows, macOS) and the nurdiff-cli command line, and attaches them to a DRAFT
+# release. Start it by pushing a tag `vX.Y.Z` (it must match the version in src-tauri/tauri.conf.json), or by hand
+# from the Actions tab: then nothing is released and the files stay as artifacts of the run.
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  app:
+    name: App (${{ matrix.name }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Ubuntu 22.04 on purpose: the binaries then run on newer distributions too.
+          - { name: linux, os: ubuntu-22.04, cli: linux, args: "" }
+          - { name: windows, os: windows-latest, cli: windows, args: "" }
+          - { name: macos-arm64, os: macos-latest, cli: macos, target: aarch64-apple-darwin, args: "--target aarch64-apple-darwin" }
+          - { name: macos-x64, os: macos-latest, cli: macos, target: x86_64-apple-darwin, args: "--target x86_64-apple-darwin" }
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: The tag matches the version of the app
+        if: github.ref_type == 'tag'
+        shell: bash
+        run: |
+          version="$(node -p "require('./src-tauri/tauri.conf.json').version")"
+          if [ "$GITHUB_REF_NAME" != "v$version" ]; then
+            echo "The tag $GITHUB_REF_NAME does not match the version $version of tauri.conf.json" >&2
+            exit 1
+          fi
+
+      - name: System libraries (Linux only)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev patchelf
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+
+      - uses: Swatinem/rust-cache@v2
+
+      - run: npm ci
+
+      # The installers carry the command line next to the app (`git difftool` needs it): see src-tauri/bundle-cli/.
+      - name: Build the command line and stage it for the installers
+        shell: bash
+        run: ./scripts/stage-cli.sh "${{ matrix.target }}"
+
+      - uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: ${{ github.ref_type == 'tag' && github.ref_name || '' }}
+          releaseName: NurDiff ${{ github.ref_name }}
+          releaseDraft: true
+          prerelease: true
+          args: ${{ matrix.args }} --config src-tauri/bundle-cli/${{ matrix.cli }}.json
+
+      # A build that needs no installation: the two executables the installer carries (the app and the command line,
+      # which looks for the app next to itself), the license and a README.txt with the requirements. It needs the WebView2 runtime, which Windows 10 and 11
+      # already have.
+      - name: Pack the portable build (Windows only)
+        if: runner.os == 'Windows'
+        shell: bash
+        run: |
+          version="$(node -p "require('./src-tauri/tauri.conf.json').version")"
+          name="NurDiff-$version-windows-x64-portable"
+          mkdir "$name"
+          cp target/release/nurdiff.exe src-tauri/bundle-extra/nurdiff-cli.exe LICENSE "$name/"
+          cp scripts/portable-readme-windows.txt "$name/README.txt"
+          7z a "$name.zip" "$name" > /dev/null
+          echo "PORTABLE=$name.zip" >> "$GITHUB_ENV"
+
+      - name: Attach the portable build to the draft release
+        if: runner.os == 'Windows' && github.ref_type == 'tag'
+        uses: softprops/action-gh-release@v3
+        with:
+          draft: true
+          prerelease: true
+          files: ${{ env.PORTABLE }}
+
+      - name: Keep the portable build (manual run)
+        if: runner.os == 'Windows' && github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v6
+        with:
+          name: app-windows-portable
+          path: ${{ env.PORTABLE }}
+          retention-days: 7
+
+      - name: Keep the installers (manual run)
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v6
+        with:
+          name: app-${{ matrix.name }}
+          path: |
+            target/release/bundle/**
+            target/*/release/bundle/**
+          if-no-files-found: warn
+          retention-days: 7
+
+  cli:
+    name: Command line (${{ matrix.name }})
+    needs: app
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: linux, os: ubuntu-22.04, target: x86_64-unknown-linux-gnu }
+          - { name: windows, os: windows-latest, target: x86_64-pc-windows-msvc }
+          - { name: macos-arm64, os: macos-latest, target: aarch64-apple-darwin }
+          - { name: macos-x64, os: macos-latest, target: x86_64-apple-darwin }
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+
+      - uses: Swatinem/rust-cache@v2
+
+      - run: cargo build --release -p nurdiff-cli --target ${{ matrix.target }}
+
+      - name: Pack
+        shell: bash
+        run: |
+          name="nurdiff-cli-${{ matrix.target }}"
+          mkdir "$name"
+          if [ "${{ runner.os }}" = "Windows" ]; then
+            cp "target/${{ matrix.target }}/release/nurdiff-cli.exe" "$name/"
+          else
+            cp "target/${{ matrix.target }}/release/nurdiff-cli" "$name/"
+          fi
+          cp LICENSE "$name/"
+          if [ "${{ runner.os }}" = "Windows" ]; then
+            7z a "$name.zip" "$name" > /dev/null
+            echo "ASSET=$name.zip" >> "$GITHUB_ENV"
+          else
+            tar czf "$name.tar.gz" "$name"
+            echo "ASSET=$name.tar.gz" >> "$GITHUB_ENV"
+          fi
+
+      - name: Attach to the draft release
+        if: github.ref_type == 'tag'
+        uses: softprops/action-gh-release@v3
+        with:
+          draft: true
+          prerelease: true
+          files: ${{ env.ASSET }}
+
+      - name: Keep the file (manual run)
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v6
+        with:
+          name: cli-${{ matrix.name }}
+          path: ${{ env.ASSET }}
+          retention-days: 7
+
+  # Runs after everything is attached to the draft release: it downloads the files, writes SHA256SUMS next to them
+  # and, if the repository is public, signs each file with a build provenance attestation (`gh attestation verify`).
+  # Attestations of private repositories need a paid GitHub plan, so there they are skipped.
+  checksums:
+    name: Checksums and provenance
+    needs: [app, cli]
+    if: github.ref_type == 'tag'
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      # A draft release is not found by its tag: it is looked up in the list, then its files are downloaded one by one.
+      - name: Download the files of the draft release
+        run: |
+          mkdir dist
+          id="$(gh api "repos/$GITHUB_REPOSITORY/releases?per_page=100" --jq ".[] | select(.tag_name == \"$GITHUB_REF_NAME\") | .id" | head -n 1)"
+          if [ -z "$id" ]; then
+            echo "No release found for the tag $GITHUB_REF_NAME" >&2
+            exit 1
+          fi
+          gh api "repos/$GITHUB_REPOSITORY/releases/$id/assets?per_page=100" --jq '.[] | select(.name != "SHA256SUMS") | "\(.id) \(.name)"' |
+            while read -r asset_id name; do
+              gh api -H "Accept: application/octet-stream" "repos/$GITHUB_REPOSITORY/releases/assets/$asset_id" > "dist/$name"
+            done
+          ls -l dist
+          test -n "$(ls dist)"
+
+      - name: Write SHA256SUMS
+        run: cd dist && sha256sum -- * > SHA256SUMS && cat SHA256SUMS
+
+      - name: Attest the provenance of the files
+        if: github.event.repository.private == false
+        uses: actions/attest-build-provenance@v4
+        with:
+          subject-path: dist/*
+
+      - name: Attach SHA256SUMS to the draft release
+        uses: softprops/action-gh-release@v3
+        with:
+          draft: true
+          prerelease: true
+          files: dist/SHA256SUMS

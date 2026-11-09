@@ -1,0 +1,13 @@
+# A separate tool (not part of the workspace): generates the JSON fixtures of the UI test
+# with the real answers of the core. Usage: cargo run --release --manifest-path tools/fixgen/Cargo.toml -- <mode> <left> <right> <output.json>
+# Modes: file, merge, dir (see src/main.rs).
+[package]
+name = "fixgen"
+version = "0.0.0"
+edition = "2021"
+
+[dependencies]
+nurdiff-core = { path = "../../crates/core" }
+serde_json = "1"
+
+[workspace]

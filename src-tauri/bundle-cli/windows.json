@@ -1,0 +1,5 @@
+{
+  "bundle": {
+    "resources": { "bundle-extra/nurdiff-cli.exe": "nurdiff-cli.exe" }
+  }
+}

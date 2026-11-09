@@ -1,0 +1,207 @@
+/* --- Dialog windows --- */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.modal {
+  width: min(34rem, 100%);
+  max-height: 100%;
+  overflow: auto;
+  padding: 18px 22px;
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+}
+
+/* Long lists (the shortcuts): the descriptions fit on one line. */
+.modal.wide {
+  width: min(52rem, 100%);
+}
+
+.modal:focus {
+  outline: none;
+}
+
+.modal h2 {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+}
+
+.modal fieldset {
+  margin: 0 0 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.modal fieldset .check {
+  display: flex;
+  margin: 4px 0;
+}
+
+.form {
+  display: grid;
+  gap: 12px;
+}
+
+/* The options by area, like the shortcuts: two columns (so a label and its control are close) that become one on a narrow window. */
+.opt-groups {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 28px;
+  align-items: start;
+}
+
+@media (max-width: 760px) {
+  .opt-groups {
+    grid-template-columns: 1fr;
+  }
+}
+
+.opt-group {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 18px;
+}
+
+.opt-group h3 {
+  margin: 0;
+  padding: 0 0 4px;
+  border-bottom: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: inherit;
+  font-weight: 600;
+}
+
+.opt-group > label:not(.check) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* The explanation of a checkbox, close under it and under its text. */
+.opt-group > .check + .muted {
+  margin-top: -6px;
+  padding-left: 22px;
+}
+
+.opt-size {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.opt-size input {
+  width: 4.5rem;
+}
+
+.form > label,
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.form-row {
+  margin-bottom: 8px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.shortcuts {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.shortcuts th,
+.shortcuts td {
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+/* The title of a group of shortcuts. */
+.shortcuts tr.group th {
+  padding-top: 14px;
+  border-bottom: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: inherit;
+  font-weight: 600;
+}
+
+.shortcuts tbody:first-child tr.group th {
+  padding-top: 2px;
+}
+
+.shortcuts th {
+  white-space: nowrap;
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: var(--fs);
+}
+
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+
+/* The Git part of the options. */
+.git-setup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.git-state {
+  margin: 0;
+  font-weight: 600;
+}
+
+.git-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* The warning about the settings that cannot be saved: a strip under the title bar. */
+.config-problem {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+  padding: 6px 12px;
+  border-radius: 0;
+  border-width: 0 0 1px;
+}
+
+.config-problem-close {
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}

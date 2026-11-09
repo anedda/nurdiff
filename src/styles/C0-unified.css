@@ -1,0 +1,130 @@
+/* Unified view of the files: a single pane, two row numbers and the −/+ sign */
+.viewer.unified {
+  grid-template-columns: 1fr 16px;
+}
+
+.pane.unified {
+  border-right: 0;
+}
+
+.vrow.urow .num.num2 {
+  left: 4.5rem;
+}
+
+.vrow.urow .u-sign {
+  flex: none;
+  width: 1.6rem;
+  text-align: center;
+  color: var(--muted);
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.vrow.urow.del .u-sign,
+.vrow.urow.add .u-sign {
+  color: var(--fg);
+  font-weight: 700;
+}
+
+/* Unified view of the folder comparison: name | status | left (size, date) | right */
+.dir-list.unified {
+  container-type: inline-size;
+}
+
+.dir-row.marked.unified {
+  grid-template-columns: 2.25rem minmax(6rem, 1fr) 16rem 16rem 6.5rem;
+}
+
+.dir-row.unified > * {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.dir-row.unified .half {
+  display: flex;
+  align-items: center;
+  border-left: 1px solid var(--border);
+}
+
+.u-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c, var(--muted));
+}
+
+.u-status svg {
+  flex: none;
+}
+
+.u-side {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  border-left: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.u-side .dir-size,
+.u-side .dir-date {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.u-count {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 10px;
+  border-left: 1px solid var(--border);
+}
+
+.u-count .dir-size {
+  white-space: nowrap;
+}
+
+.dir-count-unit {
+  color: var(--muted);
+}
+
+.u-count.head-count {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  white-space: nowrap;
+}
+
+.u-side.head-side {
+  display: block;
+  padding: 4px 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.dir-row.head.unified .half {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+/* Narrow window: the dates are removed and the sizes stay. */
+@container (max-width: 820px) {
+  .dir-row.marked.unified {
+    grid-template-columns: 2.25rem minmax(6rem, 1fr) 6.5rem 6.5rem 5.5rem;
+  }
+
+  .u-head-hint {
+    display: none;
+  }
+
+  .u-side {
+    grid-template-columns: 1fr;
+  }
+
+  .u-side .dir-date {
+    display: none;
+  }
+}
+
+/* The status takes the colours of the entries. */
+.dir-row.head .u-status { color: var(--muted); }

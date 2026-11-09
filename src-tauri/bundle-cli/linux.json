@@ -1,0 +1,8 @@
+{
+  "bundle": {
+    "linux": {
+      "deb": { "files": { "/usr/bin/nurdiff-cli": "bundle-extra/nurdiff-cli" } },
+      "rpm": { "files": { "/usr/bin/nurdiff-cli": "bundle-extra/nurdiff-cli" } }
+    }
+  }
+}
