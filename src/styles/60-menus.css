@@ -1,0 +1,296 @@
+/* --- Menu bar --- */
+
+.titlebar {
+  display: flex;
+  align-items: stretch;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  user-select: none;
+}
+
+.menubar {
+  display: flex;
+  gap: 2px;
+  padding: 2px 8px;
+  font-size: var(--fs);
+}
+
+.titlebar.custom {
+  height: 32px;
+  align-items: center;
+}
+
+.titlebar.custom .menubar {
+  padding: 0 4px;
+}
+
+.tb-logo {
+  flex: none;
+  margin: 0 4px 0 10px;
+  border-radius: 4px;
+}
+
+.titledrag {
+  flex: 1;
+  min-width: 0;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--muted);
+  font-size: var(--fs);
+}
+
+.winctl {
+  display: flex;
+  align-self: stretch;
+}
+
+.winctl button {
+  width: 46px;
+  border: 0;
+  background: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+.winctl button:hover {
+  background: var(--surface);
+}
+
+.winctl button.close:hover {
+  background: #e81123;
+  color: #fff;
+}
+
+/* Invisible edges to resize the window without a system bar. */
+.rz {
+  position: fixed;
+  z-index: 1000;
+}
+.rz.n, .rz.s { left: 8px; right: 8px; height: 4px; }
+.rz.w, .rz.e { top: 8px; bottom: 8px; width: 4px; }
+.rz.n { top: 0; cursor: ns-resize; }
+.rz.s { bottom: 0; cursor: ns-resize; }
+.rz.w { left: 0; cursor: ew-resize; }
+.rz.e { right: 0; cursor: ew-resize; }
+.rz.nw, .rz.ne, .rz.sw, .rz.se { width: 8px; height: 8px; }
+.rz.nw { top: 0; left: 0; cursor: nwse-resize; }
+.rz.se { bottom: 0; right: 0; cursor: nwse-resize; }
+.rz.ne { top: 0; right: 0; cursor: nesw-resize; }
+.rz.sw { bottom: 0; left: 0; cursor: nesw-resize; }
+
+.menu {
+  position: relative;
+}
+
+.menu-title {
+  padding: 3px 10px;
+  border: 0;
+  border-radius: 4px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: default;
+}
+
+.menu-title:hover,
+.menu-title.open {
+  background: var(--surface);
+}
+
+.menu-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 40;
+  min-width: 15rem;
+  /* As wide as the longest item: without it, the panel takes the width of the title and the items wrap. */
+  width: max-content;
+  max-width: calc(100vw - 16px);
+  padding: 4px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+/* An item with a submenu: the panel opens beside it, level with it. */
+.menu-item {
+  position: relative;
+}
+
+.menu-panel.submenu {
+  top: -5px;
+  left: 100%;
+  min-width: 12rem;
+  margin-left: 2px;
+}
+
+.menu-arrow {
+  margin-left: auto;
+  padding-left: 1.5rem;
+  color: var(--muted);
+}
+
+.menu-panel button:hover:not(:disabled) .menu-arrow,
+.menu-panel button:focus-visible .menu-arrow {
+  color: inherit;
+}
+
+.menu-panel hr {
+  margin: 4px 2px;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+.menu-panel button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 4px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: default;
+}
+
+.menu-panel button:hover:not(:disabled),
+.menu-panel button:focus-visible {
+  background: var(--accent);
+  color: #fff;
+  outline: none;
+}
+
+.menu-panel button:disabled {
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+.dirbar .menu-panel {
+  z-index: 60;
+  min-width: 21rem;
+}
+
+.ext-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 10px;
+  width: 20rem;
+  min-width: 0;
+}
+
+.ext-filter label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ext-filter label.check-row {
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+.ext-filter-hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--fs-sm);
+}
+
+.ext-filter-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.ext-filter .ext-filter-buttons button {
+  width: auto;
+  justify-content: center;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+}
+
+.ext-filter .ext-filter-buttons button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.menu-panel .tb-icon {
+  width: 1rem;
+  text-align: center;
+}
+
+/* "More filters": icons tinted by status; on the highlighted item (blue background) they become white. */
+.menu-panel .tb-icon.fi-neutral { color: var(--muted); }
+.menu-panel .tb-icon.fi-different { color: var(--del-fg); }
+.menu-panel .tb-icon.fi-left { color: var(--orphan); }
+.menu-panel .tb-icon.fi-right { color: var(--orphan-r); }
+
+.menu-panel button:hover:not(:disabled) .tb-icon,
+.menu-panel button:focus-visible .tb-icon {
+  color: #fff;
+}
+
+.menu-panel button:disabled .tb-icon {
+  color: var(--muted);
+}
+
+.menu-panel .check {
+  width: 1rem;
+}
+
+/* The mark of the chosen item of a menu with icons: after the text, so the icons stay at the left edge. */
+.menu-panel .check-end {
+  flex: none;
+  width: 1rem;
+  text-align: center;
+}
+
+.menu-panel .menu-label {
+  flex: 1;
+}
+
+.menu-shortcut {
+  color: var(--muted);
+  font-size: var(--fs);
+}
+
+.menu-panel button:hover:not(:disabled) .menu-shortcut {
+  color: inherit;
+}
+
+.ctx-menu {
+  position: fixed;
+  top: auto;
+  left: auto;
+  z-index: 70;
+  min-width: 14rem;
+  max-width: 26rem;
+}
+
+/* Rows placed side by side by hand: a thread in the accent colour on the edge of the numbers column
+   (the column is fixed and covers the edge of the row). */
+.vrow.aligned .num {
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+/* Row marked as the first end of an alignment, waiting for the other. */
+.vrow.marked {
+  outline: 2px dashed var(--accent);
+  outline-offset: -2px;
+}
+

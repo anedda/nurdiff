@@ -1,0 +1,7 @@
+# Same line endings on every system: the tests and the fixtures expect LF.
+* text=auto eol=lf
+
+*.png binary
+*.ico binary
+*.icns binary
+*.gz binary

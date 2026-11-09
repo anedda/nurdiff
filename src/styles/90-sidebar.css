@@ -1,0 +1,317 @@
+/* --- Sidebar --- */
+
+.workarea {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
+.pages {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sb-toggle {
+  align-self: center;
+  margin-right: 6px;
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 4px;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.sb-toggle:hover:not(:disabled),
+.sb-toggle[aria-pressed="true"] {
+  color: var(--fg);
+}
+
+.sb-toggle:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.sidebar {
+  position: relative;
+  flex: none;
+  display: flex;
+  min-height: 0;
+  border-right: 1px solid var(--border);
+  background: var(--bg);
+  font-size: var(--fs);
+}
+
+.sb-strip {
+  flex: none;
+  width: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding-top: 8px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+}
+
+.sb-tab {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.sb-tab:hover:not(:disabled) {
+  color: var(--fg);
+}
+
+.sb-tab:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.sb-tab.on {
+  color: var(--fg);
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+
+.sb-panel {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sb-resize {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -3px;
+  width: 6px;
+  cursor: col-resize;
+  z-index: 30;
+  touch-action: none;
+}
+
+.sb-resize:hover {
+  background: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+.sb-slot,
+.sb-view {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sb-slot:empty {
+  flex: 0;
+}
+
+.sb-title {
+  margin: 0;
+  padding: 10px 12px 6px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.sb-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 0 12px 8px;
+}
+
+.sb-chip {
+  padding: 1px 8px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: var(--fs-sm);
+  cursor: pointer;
+}
+
+.sb-chip.on {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.sb-list {
+  flex: 1;
+  min-height: 0;
+}
+
+.sb-list .vl-row {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.sb-item {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.sb-item:hover {
+  background: var(--surface);
+}
+
+.sb-item.cur {
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.sb-bar {
+  flex: none;
+  width: 4px;
+  height: 14px;
+  border-radius: 2px;
+}
+
+.sb-num {
+  flex: none;
+  width: 44px;
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.sb-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+}
+
+.sb-text.plain {
+  font-family: inherit;
+  font-size: var(--fs);
+}
+
+.sb-len {
+  flex: none;
+  margin-left: auto;
+  color: var(--muted);
+  font-size: var(--fs-xs);
+}
+
+.sb-tw {
+  flex: none;
+  width: 12px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.sb-st {
+  flex: none;
+  width: 16px;
+  color: var(--c, inherit);
+  text-align: center;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+}
+
+.sb-st {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The "=" of an identical file: grey, as in the folder list. The others take their colour from the central block (`--c`). */
+.sb-st.st-identical {
+  --c: var(--muted);
+}
+
+
+.sb-note {
+  margin-top: 0;
+}
+
+.sb-empty,
+.sb-hint {
+  margin: 8px 12px;
+  color: var(--muted);
+  font-size: var(--fs);
+}
+
+/* Row compared again in place: in progress ("…") or failed ("!"). */
+.dir-row.pending .dir-mark {
+  opacity: 0.6;
+}
+.dir-row.failed .dir-mark {
+  color: var(--del-fg);
+  font-weight: 700;
+}
+
+
+/* At the foot of the list of files: open or close all the folders of the list (only of the list). */
+.sb-foot {
+  flex: none;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-top: 1px solid var(--border);
+}
+
+.sb-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: var(--fs-sm);
+  cursor: pointer;
+}
+
+/* The icons have the colour of those of the folder bar (`.tb-icon`: the accent, light blue on the dark theme). */
+.sb-btn .tb-icon {
+  display: grid;
+  line-height: 1;
+}
+
+.sb-btn:hover:not(:disabled),
+.sb-btn:focus-visible {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.sb-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}

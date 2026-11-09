@@ -1,0 +1,90 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+# A new push on the same branch cancels the run still going.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  core:
+    name: Core + CLI (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v6
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo fmt --all --check
+      - run: cargo clippy --all-targets -- -D warnings
+      - run: cargo test
+
+  app:
+    name: App Tauri (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v6
+      - name: Dipendenze di sistema (solo Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev patchelf
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      # Builds the app without creating the installers; for those: `npm run tauri build`
+      - run: npm run tauri build -- --no-bundle
+      # The Tauri crate is not among the `default-members`: the checks of the "core" job do not touch it.
+      # It goes after the build, which creates `dist/` (read at compile time).
+      - run: cargo clippy -p nurdiff --all-targets -- -D warnings
+
+  # The UI test in Chromium, with the simulated `invoke` bridge, in the same container used
+  # locally (`./scripts/dev.sh`): so the fonts and versions are those it was tuned on.
+  ui:
+    name: Prova UI (Chromium)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - run: ENGINE=docker ./scripts/dev.sh image
+      - run: ENGINE=docker ./scripts/dev.sh ui
+
+  # Known vulnerabilities in the dependencies. Rust: `cargo audit` fails on an advisory, the crates only unmaintained or
+  # unsound (of the GTK stack of Tauri) stay warnings. npm: everything, failing from "high" up; the moderate ones of the
+  # lint tools are left to the report.
+  audit:
+    name: Dependency audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo install cargo-audit --locked
+      - run: cargo audit
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm audit --audit-level=high

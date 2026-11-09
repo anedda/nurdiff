@@ -1,0 +1,23 @@
+[package]
+name = "nurdiff-cli"
+description = "Command line of NurDiff: compares files and folders and works as a Git diff tool"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+
+[[bin]]
+name = "nurdiff-cli"
+path = "src/main.rs"
+
+[dependencies]
+nurdiff-core = { path = "../core" }
+nurdiff-archive = { path = "../archive" }
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
+[dev-dependencies]
+tempfile = "3"
+zip = { version = "9", default-features = false, features = ["deflate"] }

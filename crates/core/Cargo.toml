@@ -1,0 +1,15 @@
+[package]
+name = "nurdiff-core"
+description = "Comparison engine of NurDiff (files and folders), with no dependency on the interface"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+
+[dev-dependencies]
+serde_json = "1"
+tempfile = "3"

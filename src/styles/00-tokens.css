@@ -1,0 +1,131 @@
+/* JetBrains Mono (OFL licence, see src/fonts): the same look of the code on every system. */
+@font-face {
+  font-family: "JetBrains Mono";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("../fonts/jetbrains-mono-latin-ext-400-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("../fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("../fonts/jetbrains-mono-latin-700-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --bg: #ffffff;
+  --fg: #1f2328;
+  --muted: #656d76;
+  --accent: #2563eb;
+  --border: #d0d7de;
+  --surface: #f6f8fa;
+  --add: #dafbe1;
+  --del: #ffebe9;
+  --chg: #fff8c5;
+  --add-fg: #1a7f37;
+  --del-fg: #cf222e;
+  --chg-fg: #9a6700;
+  --chg-hi: #ffe27a;
+  --find: #bfe3ff;
+  --find-current: #ffb454;
+  --find-edge: #2563eb;
+  --orphan: #1d4ed8;
+  --orphan-r: #7e22ce;
+  --mismatch: #0f766e;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  /* Scale of the interface, as in VS Code: 13 normal, 12 secondary, 11 minimal labels. */
+  --fs: 13px;
+  --fs-sm: 12px;
+  --fs-xs: 11px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: var(--fs);
+  font-variant-ligatures: none; /* in a diff "->" must stay two characters */
+  color: var(--fg);
+  background: var(--bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14161a;
+    --fg: #e6e8eb;
+    --muted: #9aa3ad;
+    --accent: #60a5fa;
+    --border: #3a3f47;
+    --surface: #1c2026;
+    /* The tint of a status as a background: the same share of its colour over the background, so the three agree. */
+    --tint: 16%;
+    --add: color-mix(in srgb, var(--add-fg) var(--tint), var(--bg));
+    --del: color-mix(in srgb, var(--del-fg) var(--tint), var(--bg));
+    --chg: color-mix(in srgb, var(--chg-fg) var(--tint), var(--bg));
+    --add-fg: #56d364;
+    --del-fg: #ff7b72;
+    --chg-fg: #e3b341;
+    --chg-hi: #7a6516;
+    --find: #1f4a7a;
+    --find-current: #8a5a12;
+    --find-edge: #60a5fa;
+    --orphan: #7aa2ff;
+    --orphan-r: #c084fc;
+    --mismatch: #2dd4bf;
+  }
+}
+
+/* Theme chosen by hand from the options (on the root element, attribute data-theme). */
+:root[data-theme="dark"] {
+  --bg: #14161a;
+  --fg: #e6e8eb;
+  --muted: #9aa3ad;
+  --accent: #60a5fa;
+  --border: #3a3f47;
+  --surface: #1c2026;
+  /* The tint of a status as a background: the same share of its colour over the background, so the three agree. */
+  --tint: 16%;
+  --add: color-mix(in srgb, var(--add-fg) var(--tint), var(--bg));
+  --del: color-mix(in srgb, var(--del-fg) var(--tint), var(--bg));
+  --chg: color-mix(in srgb, var(--chg-fg) var(--tint), var(--bg));
+  --add-fg: #56d364;
+  --del-fg: #ff7b72;
+  --chg-fg: #e3b341;
+  --chg-hi: #7a6516;
+  --find: #1f4a7a;
+  --find-current: #8a5a12;
+  --find-edge: #60a5fa;
+  --orphan: #7aa2ff;
+  --orphan-r: #c084fc;
+  --mismatch: #2dd4bf;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+

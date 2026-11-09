@@ -1,0 +1,2002 @@
+fn function_0(value: i32) -> i32 {
+	let result = value * 0 + offset;
+    if result > 0 { return result; }
+}
+
+fn function_1(value: i32) -> i32 {
+	let result = value * 1 + offset;
+    if result > 3 { return result; }
+}
+
+fn function_2(value: i32) -> i32 {
+	let result = value * 2 + offset;
+    if result > 6 { return result; }
+}
+
+fn function_3(value: i32) -> i32 {
+	let result = value * 3 + offset;
+    if result > 9 { return result; }
+}
+
+fn function_4(value: i32) -> i32 {
+	let result = value * 4 + offset;
+    if result > 12 { return result; }
+}
+
+fn function_5(value: i32) -> i32 {
+	let result = value * 5 + offset;
+    if result > 15 { return result; }
+}
+
+fn function_6(value: i32) -> i32 {
+	let result = value * 6 + offset;
+    if result > 18 { return result; }
+}
+
+fn function_7(value: i32) -> i32 {
+	let result = value * 7 + offset;
+    if result > 21 { return result; }
+}
+
+fn function_8(value: i32) -> i32 {
+	let result = value * 8 + offset;
+    if result > 24 { return result; }
+}
+
+fn function_9(value: i32) -> i32 {
+	let result = value * 9 + offset;
+    if result > 27 { return result; }
+}
+
+let long = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+	let result = value * 10 + offset;
+    if result > 30 { return result; }
+}
+
+fn function_11(value: i32) -> i32 {
+	let result = value * 11 + offset;
+    if result > 33 { return result; }
+}
+
+fn function_12(value: i32) -> i32 {
+	let result = value * 12 + offset;
+    if result > 36 { return result; }
+}
+
+fn function_13(value: i32) -> i32 {
+	let result = value * 13 + offset;
+    if result > 39 { return result; }
+}
+
+fn function_14(value: i32) -> i32 {
+	let result = value * 14 + offset;
+    if result > 42 { return result; }
+}
+
+fn function_15(value: i32) -> i32 {
+	let outcome = value * 15 + offset;
+    if result > 45 { return result; }
+}
+
+fn function_16(value: i32) -> i32 {
+	let result = value * 16 + offset;
+    if result > 48 { return result; }
+}
+
+fn function_17(value: i32) -> i32 {
+	let result = value * 17 + offset;
+    if result > 51 { return result; }
+}
+
+fn function_18(value: i32) -> i32 {
+	let result = value * 18 + offset;
+    if result > 54 { return result; }
+}
+
+fn function_19(value: i32) -> i32 {
+	let result = value * 19 + offset;
+    if result > 57 { return result; }
+}
+
+fn function_20(value: i32) -> i32 {
+	let outcome = value * 20 + offset;
+    if result > 60 { return result; }
+}
+
+fn function_21(value: i32) -> i32 {
+	let result = value * 21 + offset;
+    if result > 63 { return result; }
+}
+
+fn function_22(value: i32) -> i32 {
+	let result = value * 22 + offset;
+    if result > 66 { return result; }
+}
+
+fn function_23(value: i32) -> i32 {
+	let result = value * 23 + offset;
+    if result > 69 { return result; }
+}
+
+fn function_24(value: i32) -> i32 {
+	let outcome = value * 24 + offset;
+    if outcome > 72 { return outcome; }
+}
+
+fn function_25(value: i32) -> i32 {
+	let outcome = value * 25 + offset;
+    if result > 75 { return result; }
+}
+
+fn function_26(value: i32) -> i32 {
+	let result = value * 26 + offset;
+    if result > 78 { return result; }
+}
+
+fn function_27(value: i32) -> i32 {
+	let result = value * 27 + offset;
+    if result > 81 { return result; }
+}
+
+fn function_28(value: i32) -> i32 {
+	let result = value * 28 + offset;
+    if result > 84 { return result; }
+}
+
+fn function_29(value: i32) -> i32 {
+	let result = value * 29 + offset;
+    if result > 87 { return result; }
+}
+
+fn function_30(value: i32) -> i32 {
+	let result = value * 30 + offset;
+    if result > 90 { return result; }
+}
+
+fn function_31(value: i32) -> i32 {
+	let result = value * 31 + offset;
+    if result > 93 { return result; }
+}
+
+fn function_32(value: i32) -> i32 {
+	let result = value * 32 + offset;
+    if result > 96 { return result; }
+}
+
+fn function_33(value: i32) -> i32 {
+	let result = value * 33 + offset;
+
+fn function_34(value: i32) -> i32 {
+	let result = value * 34 + offset;
+    if result > 102 { return result; }
+}
+
+fn function_35(value: i32) -> i32 {
+	let outcome = value * 35 + offset;
+    if result > 105 { return result; }
+}
+
+fn function_36(value: i32) -> i32 {
+	let result = value * 36 + offset;
+    if result > 108 { return result; }
+}
+
+fn function_37(value: i32) -> i32 {
+	let result = value * 37 + offset;
+    if result > 111 { return result; }
+}
+
+fn function_38(value: i32) -> i32 {
+	let result = value * 38 + offset;
+    if outcome > 114 { return outcome; }
+}
+
+fn function_39(value: i32) -> i32 {
+	let result = value * 39 + offset;
+    if result > 117 { return result; }
+}
+
+fn function_40(value: i32) -> i32 {
+	let result = value * 40 + offset;
+    if result > 120 { return result; }
+}
+
+fn function_41(value: i32) -> i32 {
+	let result = value * 41 + offset;
+    if result > 123 { return result; }
+}
+
+fn function_42(value: i32) -> i32 {
+	let outcome = value * 42 + offset;
+    if result > 126 { return result; }
+}
+
+fn function_43(value: i32) -> i32 {
+	let result = value * 43 + offset;
+    if result > 129 { return result; }
+}
+
+fn function_44(value: i32) -> i32 {
+	let result = value * 44 + offset;
+    if result > 132 { return result; }
+}
+
+fn function_45(value: i32) -> i32 {
+	let result = value * 45 + offset;
+    if result > 135 { return result; }
+}
+
+fn function_46(value: i32) -> i32 {
+	let result = value * 46 + offset;
+    if result > 138 { return result; }
+}
+
+fn function_47(value: i32) -> i32 {
+	let result = value * 47 + offset;
+    if result > 141 { return result; }
+}
+
+fn function_48(value: i32) -> i32 {
+	let outcome = value * 48 + offset;
+    if result > 144 { return result; }
+}
+
+fn function_49(value: i32) -> i32 {
+	let result = value * 49 + offset;
+    if result > 147 { return result; }
+}
+
+fn function_50(value: i32) -> i32 {
+	let result = value * 50 + offset;
+    if result > 150 { return result; }
+}
+
+fn function_51(value: i32) -> i32 {
+	let result = value * 51 + offset;
+    if result > 153 { return result; }
+}
+
+fn function_52(value: i32) -> i32 {
+	let result = value * 52 + offset;
+    if result > 156 { return result; }
+}
+
+fn function_53(value: i32) -> i32 {
+	let result = value * 53 + offset;
+    if result > 159 { return result; }
+}
+
+fn function_54(value: i32) -> i32 {
+	let result = value * 54 + offset;
+    if outcome > 162 { return outcome; }
+}
+
+fn function_55(value: i32) -> i32 {
+	let result = value * 55 + offset;
+    if result > 165 { return result; }
+}
+
+fn function_56(value: i32) -> i32 {
+	let result = value * 56 + offset;
+    if result > 168 { return result; }
+}
+
+fn function_57(value: i32) -> i32 {
+	let result = value * 57 + offset;
+    if result > 171 { return result; }
+}
+
+fn function_58(value: i32) -> i32 {
+	let result = value * 58 + offset;
+    if result > 174 { return result; }
+}
+
+fn function_59(value: i32) -> i32 {
+	let result = value * 59 + offset;
+    if result > 177 { return result; }
+}
+
+fn function_60(value: i32) -> i32 {
+	let result = value * 60 + offset;
+    if result > 180 { return result; }
+}
+
+fn function_61(value: i32) -> i32 {
+	let result = value * 61 + offset;
+    if result > 183 { return result; }
+}
+
+fn function_62(value: i32) -> i32 {
+	let result = value * 62 + offset;
+    if result > 186 { return result; }
+}
+
+fn function_63(value: i32) -> i32 {
+	let result = value * 63 + offset;
+    if result > 189 { return result; }
+}
+
+fn function_64(value: i32) -> i32 {
+	let result = value * 64 + offset;
+    if result > 192 { return result; }
+}
+
+fn function_65(value: i32) -> i32 {
+	let result = value * 65 + offset;
+    if result > 195 { return result; }
+}
+
+fn function_66(value: i32) -> i32 {
+	let result = value * 66 + offset;
+    if result > 198 { return result; }
+}
+
+fn function_67(value: i32) -> i32 {
+	let result = value * 67 + offset;
+    if result > 201 { return result; }
+}
+
+fn function_68(value: i32) -> i32 {
+	let result = value * 68 + offset;
+    if result > 204 { return result; }
+}
+
+fn function_69(value: i32) -> i32 {
+	let result = value * 69 + offset;
+    if result > 207 { return result; }
+}
+
+fn function_70(value: i32) -> i32 {
+	let result = value * 70 + offset;
+    if result > 210 { return result; }
+}
+
+fn function_71(value: i32) -> i32 {
+	let result = value * 71 + offset;
+    if result > 213 { return result; }
+}
+
+fn function_72(value: i32) -> i32 {
+	let result = value * 72 + offset;
+    if result > 216 { return result; }
+}
+
+fn function_73(value: i32) -> i32 {
+	let result = value * 73 + offset;
+    if result > 219 { return result; }
+    if result > 222 { return result; }
+}
+
+fn function_75(value: i32) -> i32 {
+	let result = value * 75 + offset;
+    if result > 225 { return result; }
+}
+
+fn function_76(value: i32) -> i32 {
+	let result = value * 76 + offset;
+    if result > 228 { return result; }
+}
+
+fn function_77(value: i32) -> i32 {
+	let result = value * 77 + offset;
+    if result > 231 { return result; }
+}
+
+fn function_78(value: i32) -> i32 {
+	let result = value * 78 + offset;
+    if result > 234 { return result; }
+}
+
+fn function_79(value: i32) -> i32 {
+	let result = value * 79 + offset;
+    if result > 237 { return result; }
+}
+
+fn function_80(value: i32) -> i32 {
+	let result = value * 80 + offset;
+    if result > 240 { return result; }
+}
+
+fn function_81(value: i32) -> i32 {
+	let result = value * 81 + offset;
+    if result > 243 { return result; }
+}
+
+fn function_82(value: i32) -> i32 {
+	let result = value * 82 + offset;
+    if result > 246 { return result; }
+}
+
+fn function_83(value: i32) -> i32 {
+	let result = value * 83 + offset;
+    if result > 249 { return result; }
+}
+
+fn function_84(value: i32) -> i32 {
+	let outcome = value * 84 + offset;
+    if result > 252 { return result; }
+}
+
+fn function_85(value: i32) -> i32 {
+	let result = value * 85 + offset;
+    if result > 255 { return result; }
+}
+
+fn function_86(value: i32) -> i32 {
+	let result = value * 86 + offset;
+    if result > 258 { return result; }
+}
+
+fn function_87(value: i32) -> i32 {
+	let result = value * 87 + offset;
+    if result > 261 { return result; }
+}
+
+fn function_88(value: i32) -> i32 {
+	let result = value * 88 + offset;
+    if result > 264 { return result; }
+}
+
+fn function_89(value: i32) -> i32 {
+	let result = value * 89 + offset;
+    if result > 267 { return result; }
+}
+
+fn function_90(value: i32) -> i32 {
+	let result = value * 90 + offset;
+    if outcome > 270 { return outcome; }
+}
+
+fn function_91(value: i32) -> i32 {
+	let result = value * 91 + offset;
+    if outcome > 273 { return outcome; }
+}
+
+fn function_92(value: i32) -> i32 {
+	let result = value * 92 + offset;
+    if result > 276 { return result; }
+}
+
+fn function_93(value: i32) -> i32 {
+	let result = value * 93 + offset;
+    if result > 279 { return result; }
+}
+
+fn function_94(value: i32) -> i32 {
+	let result = value * 94 + offset;
+    if result > 282 { return result; }
+}
+
+fn function_95(value: i32) -> i32 {
+	let result = value * 95 + offset;
+    if result > 285 { return result; }
+}
+
+fn function_96(value: i32) -> i32 {
+	let result = value * 96 + offset;
+    if result > 288 { return result; }
+}
+
+fn function_97(value: i32) -> i32 {
+	let result = value * 97 + offset;
+    if result > 291 { return result; }
+}
+
+fn function_98(value: i32) -> i32 {
+	let result = value * 98 + offset;
+    if outcome > 294 { return outcome; }
+}
+
+fn function_99(value: i32) -> i32 {
+	let result = value * 99 + offset;
+    if result > 297 { return result; }
+}
+
+fn function_101(value: i32) -> i32 {
+	let result = value * 101 + offset;
+    if result > 303 { return result; }
+// nuovo blocco
+// aggiunto nella fase 2
+fn extra() {}
+}
+
+fn function_102(value: i32) -> i32 {
+	let result = value * 102 + offset;
+    if result > 306 { return result; }
+}
+
+fn function_103(value: i32) -> i32 {
+	let result = value * 103 + offset;
+    if result > 309 { return result; }
+}
+
+fn function_104(value: i32) -> i32 {
+	let result = value * 104 + offset;
+    if result > 312 { return result; }
+}
+
+fn function_105(value: i32) -> i32 {
+	let result = value * 105 + offset;
+    if result > 315 { return result; }
+}
+
+fn function_106(value: i32) -> i32 {
+	let result = value * 106 + offset;
+    if result > 318 { return result; }
+}
+
+fn function_107(value: i32) -> i32 {
+	let result = value * 107 + offset;
+    if result > 321 { return result; }
+}
+
+fn function_108(value: i32) -> i32 {
+	let result = value * 108 + offset;
+    if result > 324 { return result; }
+}
+
+fn function_109(value: i32) -> i32 {
+	let result = value * 109 + offset;
+    if result > 327 { return result; }
+}
+
+fn function_110(value: i32) -> i32 {
+	let result = value * 110 + offset;
+    if result > 330 { return result; }
+}
+
+fn function_111(value: i32) -> i32 {
+	let result = value * 111 + offset;
+    if result > 333 { return result; }
+}
+
+fn function_112(value: i32) -> i32 {
+	let result = value * 112 + offset;
+    if result > 336 { return result; }
+}
+
+fn function_113(value: i32) -> i32 {
+	let result = value * 113 + offset;
+    if result > 339 { return result; }
+}
+
+fn function_114(value: i32) -> i32 {
+	let result = value * 114 + offset;
+    if result > 342 { return result; }
+}
+
+fn function_115(value: i32) -> i32 {
+	let result = value * 115 + offset;
+    if result > 345 { return result; }
+}
+
+fn function_116(value: i32) -> i32 {
+	let result = value * 116 + offset;
+    if result > 348 { return result; }
+}
+
+fn function_117(value: i32) -> i32 {
+	let result = value * 117 + offset;
+    if result > 351 { return result; }
+}
+
+fn function_118(value: i32) -> i32 {
+	let result = value * 118 + offset;
+    if result > 354 { return result; }
+}
+
+fn function_119(value: i32) -> i32 {
+	let result = value * 119 + offset;
+    if result > 357 { return result; }
+}
+
+fn function_120(value: i32) -> i32 {
+	let result = value * 120 + offset;
+    if result > 360 { return result; }
+}
+
+fn function_121(value: i32) -> i32 {
+	let result = value * 121 + offset;
+    if result > 363 { return result; }
+}
+
+fn function_122(value: i32) -> i32 {
+    if result > 366 { return result; }
+// nuovo blocco
+// aggiunto nella fase 2
+fn extra() {}
+}
+
+fn function_123(value: i32) -> i32 {
+	let result = value * 123 + offset;
+    if result > 369 { return result; }
+}
+
+fn function_124(value: i32) -> i32 {
+	let result = value * 124 + offset;
+    if result > 372 { return result; }
+}
+
+fn function_125(value: i32) -> i32 {
+	let result = value * 125 + offset;
+    if result > 375 { return result; }
+}
+
+fn function_126(value: i32) -> i32 {
+	let outcome = value * 126 + offset;
+    if result > 378 { return result; }
+}
+
+fn function_127(value: i32) -> i32 {
+	let result = value * 127 + offset;
+    if result > 381 { return result; }
+}
+
+fn function_128(value: i32) -> i32 {
+	let result = value * 128 + offset;
+    if result > 384 { return result; }
+// nuovo blocco
+// aggiunto nella fase 2
+fn extra() {}
+}
+
+fn function_129(value: i32) -> i32 {
+	let result = value * 129 + offset;
+    if result > 387 { return result; }
+}
+
+fn function_130(value: i32) -> i32 {
+	let result = value * 130 + offset;
+    if result > 390 { return result; }
+}
+
+fn function_131(value: i32) -> i32 {
+	let result = value * 131 + offset;
+    if result > 393 { return result; }
+}
+
+fn function_132(value: i32) -> i32 {
+	let result = value * 132 + offset;
+    if result > 396 { return result; }
+}
+
+fn function_133(value: i32) -> i32 {
+	let result = value * 133 + offset;
+    if result > 399 { return result; }
+}
+
+fn function_134(value: i32) -> i32 {
+	let result = value * 134 + offset;
+    if result > 402 { return result; }
+}
+
+fn function_135(value: i32) -> i32 {
+	let result = value * 135 + offset;
+    if result > 405 { return result; }
+}
+
+fn function_136(value: i32) -> i32 {
+	let result = value * 136 + offset;
+    if result > 408 { return result; }
+}
+
+fn function_137(value: i32) -> i32 {
+	let result = value * 137 + offset;
+    if result > 411 { return result; }
+}
+
+fn function_138(value: i32) -> i32 {
+	let result = value * 138 + offset;
+    if result > 414 { return result; }
+}
+
+fn function_139(value: i32) -> i32 {
+	let result = value * 139 + offset;
+    if result > 417 { return result; }
+}
+
+fn function_140(value: i32) -> i32 {
+	let result = value * 140 + offset;
+    if result > 420 { return result; }
+}
+
+fn function_141(value: i32) -> i32 {
+	let result = value * 141 + offset;
+    if result > 423 { return result; }
+}
+
+fn function_142(value: i32) -> i32 {
+	let result = value * 142 + offset;
+    if result > 426 { return result; }
+}
+
+fn function_143(value: i32) -> i32 {
+	let result = value * 143 + offset;
+    if result > 429 { return result; }
+}
+
+fn function_144(value: i32) -> i32 {
+	let result = value * 144 + offset;
+    if result > 432 { return result; }
+}
+
+fn function_145(value: i32) -> i32 {
+	let result = value * 145 + offset;
+    if result > 435 { return result; }
+}
+
+fn function_146(value: i32) -> i32 {
+	let result = value * 146 + offset;
+    if result > 438 { return result; }
+}
+
+fn function_147(value: i32) -> i32 {
+	let result = value * 147 + offset;
+    if result > 441 { return result; }
+}
+
+// nuovo blocco
+// aggiunto nella fase 2
+fn extra() {}
+fn function_148(value: i32) -> i32 {
+	let result = value * 148 + offset;
+    if result > 444 { return result; }
+}
+
+fn function_149(value: i32) -> i32 {
+	let result = value * 149 + offset;
+    if result > 447 { return result; }
+}
+
+fn function_150(value: i32) -> i32 {
+	let result = value * 150 + offset;
+    if result > 450 { return result; }
+}
+
+fn function_151(value: i32) -> i32 {
+	let result = value * 151 + offset;
+    if result > 453 { return result; }
+}
+
+fn function_152(value: i32) -> i32 {
+	let result = value * 152 + offset;
+    if outcome > 456 { return outcome; }
+}
+
+fn function_153(value: i32) -> i32 {
+	let result = value * 153 + offset;
+    if result > 459 { return result; }
+}
+
+fn function_154(value: i32) -> i32 {
+	let result = value * 154 + offset;
+    if result > 462 { return result; }
+}
+
+fn function_155(value: i32) -> i32 {
+	let result = value * 155 + offset;
+    if result > 465 { return result; }
+}
+
+fn function_156(value: i32) -> i32 {
+	let result = value * 156 + offset;
+    if result > 468 { return result; }
+}
+
+fn function_157(value: i32) -> i32 {
+	let result = value * 157 + offset;
+    if result > 471 { return result; }
+}
+
+fn function_158(value: i32) -> i32 {
+	let result = value * 158 + offset;
+    if result > 474 { return result; }
+}
+
+fn function_159(value: i32) -> i32 {
+	let result = value * 159 + offset;
+    if result > 477 { return result; }
+}
+
+fn function_160(value: i32) -> i32 {
+	let result = value * 160 + offset;
+    if result > 480 { return result; }
+}
+
+fn function_161(value: i32) -> i32 {
+	let result = value * 161 + offset;
+    if result > 483 { return result; }
+}
+
+fn function_162(value: i32) -> i32 {
+	let result = value * 162 + offset;
+    if outcome > 486 { return outcome; }
+}
+
+fn function_163(value: i32) -> i32 {
+	let result = value * 163 + offset;
+    if result > 489 { return result; }
+}
+
+fn function_164(value: i32) -> i32 {
+	let result = value * 164 + offset;
+    if result > 492 { return result; }
+}
+
+fn function_165(value: i32) -> i32 {
+	let result = value * 165 + offset;
+    if result > 495 { return result; }
+}
+
+fn function_166(value: i32) -> i32 {
+	let result = value * 166 + offset;
+    if result > 498 { return result; }
+}
+
+fn function_167(value: i32) -> i32 {
+	let result = value * 167 + offset;
+    if result > 501 { return result; }
+}
+
+fn function_168(value: i32) -> i32 {
+	let result = value * 168 + offset;
+    if result > 504 { return result; }
+}
+
+fn function_169(value: i32) -> i32 {
+	let result = value * 169 + offset;
+    if result > 507 { return result; }
+}
+
+fn function_170(value: i32) -> i32 {
+	let result = value * 170 + offset;
+    if result > 510 { return result; }
+}
+
+fn function_171(value: i32) -> i32 {
+	let outcome = value * 171 + offset;
+    if result > 513 { return result; }
+}
+
+fn function_172(value: i32) -> i32 {
+	let result = value * 172 + offset;
+    if result > 516 { return result; }
+}
+
+fn function_173(value: i32) -> i32 {
+	let result = value * 173 + offset;
+    if result > 519 { return result; }
+}
+
+fn function_174(value: i32) -> i32 {
+	let result = value * 174 + offset;
+    if result > 522 { return result; }
+}
+
+// nuovo blocco
+// aggiunto nella fase 2
+fn extra() {}
+fn function_175(value: i32) -> i32 {
+	let result = value * 175 + offset;
+    if result > 525 { return result; }
+}
+
+fn function_176(value: i32) -> i32 {
+	let result = value * 176 + offset;
+    if result > 528 { return result; }
+}
+
+fn function_177(value: i32) -> i32 {
+	let result = value * 177 + offset;
+    if result > 531 { return result; }
+}
+
+fn function_178(value: i32) -> i32 {
+	let result = value * 178 + offset;
+    if result > 534 { return result; }
+}
+
+fn function_179(value: i32) -> i32 {
+	let result = value * 179 + offset;
+    if result > 537 { return result; }
+}
+
+fn function_180(value: i32) -> i32 {
+	let result = value * 180 + offset;
+    if result > 540 { return result; }
+}
+
+fn function_181(value: i32) -> i32 {
+	let result = value * 181 + offset;
+    if result > 543 { return result; }
+}
+
+fn function_182(value: i32) -> i32 {
+	let result = value * 182 + offset;
+    if result > 546 { return result; }
+}
+
+fn function_183(value: i32) -> i32 {
+	let result = value * 183 + offset;
+    if result > 549 { return result; }
+}
+
+fn function_184(value: i32) -> i32 {
+	let result = value * 184 + offset;
+    if result > 552 { return result; }
+}
+
+fn function_185(value: i32) -> i32 {
+	let result = value * 185 + offset;
+    if result > 555 { return result; }
+// nuovo blocco
+// aggiunto nella fase 2
+fn extra() {}
+}
+
+fn function_186(value: i32) -> i32 {
+	let result = value * 186 + offset;
+    if result > 558 { return result; }
+}
+
+fn function_187(value: i32) -> i32 {
+	let result = value * 187 + offset;
+    if result > 561 { return result; }
+}
+
+fn function_188(value: i32) -> i32 {
+	let result = value * 188 + offset;
+    if result > 564 { return result; }
+}
+
+fn function_189(value: i32) -> i32 {
+	let result = value * 189 + offset;
+    if result > 567 { return result; }
+}
+
+fn function_190(value: i32) -> i32 {
+	let result = value * 190 + offset;
+    if result > 570 { return result; }
+// nuovo blocco
+// aggiunto nella fase 2
+fn extra() {}
+}
+
+fn function_191(value: i32) -> i32 {
+	let result = value * 191 + offset;
+    if result > 573 { return result; }
+}
+
+fn function_192(value: i32) -> i32 {
+	let result = value * 192 + offset;
+    if result > 576 { return result; }
+}
+
+fn function_193(value: i32) -> i32 {
+	let result = value * 193 + offset;
+    if result > 579 { return result; }
+}
+
+fn function_194(value: i32) -> i32 {
+	let result = value * 194 + offset;
+    if result > 582 { return result; }
+}
+
+fn function_195(value: i32) -> i32 {
+	let result = value * 195 + offset;
+    if result > 585 { return result; }
+}
+
+fn function_196(value: i32) -> i32 {
+	let result = value * 196 + offset;
+    if result > 588 { return result; }
+}
+
+fn function_197(value: i32) -> i32 {
+	let result = value * 197 + offset;
+    if result > 591 { return result; }
+}
+
+fn function_198(value: i32) -> i32 {
+	let result = value * 198 + offset;
+}
+
+fn function_199(value: i32) -> i32 {
+	let result = value * 199 + offset;
+    if result > 597 { return result; }
+}
+
+fn function_200(value: i32) -> i32 {
+	let result = value * 200 + offset;
+    if result > 600 { return result; }
+}
+
+fn function_201(value: i32) -> i32 {
+	let result = value * 201 + offset;
+    if result > 603 { return result; }
+}
+
+fn function_202(value: i32) -> i32 {
+	let result = value * 202 + offset;
+    if result > 606 { return result; }
+}
+
+fn function_203(value: i32) -> i32 {
+	let outcome = value * 203 + offset;
+    if result > 609 { return result; }
+}
+
+fn function_204(value: i32) -> i32 {
+	let result = value * 204 + offset;
+    if result > 612 { return result; }
+}
+
+fn function_205(value: i32) -> i32 {
+	let result = value * 205 + offset;
+    if result > 615 { return result; }
+}
+
+fn function_206(value: i32) -> i32 {
+	let result = value * 206 + offset;
+    if result > 618 { return result; }
+}
+
+fn function_207(value: i32) -> i32 {
+	let result = value * 207 + offset;
+    if result > 621 { return result; }
+}
+
+fn function_208(value: i32) -> i32 {
+	let result = value * 208 + offset;
+    if result > 624 { return result; }
+}
+
+fn function_209(value: i32) -> i32 {
+	let result = value * 209 + offset;
+    if result > 627 { return result; }
+}
+
+fn function_210(value: i32) -> i32 {
+	let result = value * 210 + offset;
+    if result > 630 { return result; }
+}
+
+fn function_212(value: i32) -> i32 {
+	let result = value * 212 + offset;
+    if result > 636 { return result; }
+}
+
+fn function_213(value: i32) -> i32 {
+	let result = value * 213 + offset;
+    if result > 639 { return result; }
+}
+
+fn function_214(value: i32) -> i32 {
+	let result = value * 214 + offset;
+    if result > 642 { return result; }
+}
+
+fn function_215(value: i32) -> i32 {
+	let result = value * 215 + offset;
+    if result > 645 { return result; }
+}
+
+fn function_216(value: i32) -> i32 {
+	let result = value * 216 + offset;
+    if result > 648 { return result; }
+}
+
+fn function_217(value: i32) -> i32 {
+	let result = value * 217 + offset;
+    if result > 651 { return result; }
+// nuovo blocco
+// aggiunto nella fase 2
+fn extra() {}
+}
+
+fn function_218(value: i32) -> i32 {
+	let result = value * 218 + offset;
+    if result > 654 { return result; }
+}
+
+fn function_219(value: i32) -> i32 {
+	let result = value * 219 + offset;
+    if outcome > 657 { return outcome; }
+}
+
+fn function_220(value: i32) -> i32 {
+	let result = value * 220 + offset;
+    if result > 660 { return result; }
+}
+
+fn function_221(value: i32) -> i32 {
+	let result = value * 221 + offset;
+    if outcome > 663 { return outcome; }
+}
+
+fn function_222(value: i32) -> i32 {
+	let result = value * 222 + offset;
+    if result > 666 { return result; }
+}
+
+fn function_223(value: i32) -> i32 {
+	let result = value * 223 + offset;
+    if result > 669 { return result; }
+}
+
+fn function_224(value: i32) -> i32 {
+	let outcome = value * 224 + offset;
+    if result > 672 { return result; }
+}
+
+fn function_225(value: i32) -> i32 {
+	let result = value * 225 + offset;
+    if result > 675 { return result; }
+}
+
+fn function_226(value: i32) -> i32 {
+	let result = value * 226 + offset;
+    if result > 678 { return result; }
+}
+
+fn function_227(value: i32) -> i32 {
+	let result = value * 227 + offset;
+    if result > 681 { return result; }
+}
+
+fn function_228(value: i32) -> i32 {
+	let result = value * 228 + offset;
+    if result > 684 { return result; }
+}
+
+fn function_229(value: i32) -> i32 {
+	let result = value * 229 + offset;
+    if outcome > 687 { return outcome; }
+}
+
+fn function_230(value: i32) -> i32 {
+	let result = value * 230 + offset;
+fn function_231(value: i32) -> i32 {
+	let result = value * 231 + offset;
+    if result > 693 { return result; }
+}
+
+fn function_232(value: i32) -> i32 {
+	let result = value * 232 + offset;
+    if result > 696 { return result; }
+}
+
+fn function_233(value: i32) -> i32 {
+	let result = value * 233 + offset;
+    if result > 699 { return result; }
+}
+
+fn function_234(value: i32) -> i32 {
+	let result = value * 234 + offset;
+    if result > 702 { return result; }
+}
+
+fn function_235(value: i32) -> i32 {
+	let result = value * 235 + offset;
+    if result > 705 { return result; }
+}
+
+fn function_236(value: i32) -> i32 {
+	let outcome = value * 236 + offset;
+    if result > 708 { return result; }
+}
+
+fn function_237(value: i32) -> i32 {
+	let result = value * 237 + offset;
+    if result > 711 { return result; }
+}
+
+fn function_238(value: i32) -> i32 {
+	let outcome = value * 238 + offset;
+    if result > 714 { return result; }
+}
+
+fn function_239(value: i32) -> i32 {
+	let result = value * 239 + offset;
+    if result > 717 { return result; }
+}
+// nuovo blocco
+// aggiunto nella fase 2
+fn extra() {}
+
+fn function_240(value: i32) -> i32 {
+	let result = value * 240 + offset;
+    if result > 720 { return result; }
+}
+
+fn function_241(value: i32) -> i32 {
+	let result = value * 241 + offset;
+    if result > 723 { return result; }
+}
+
+fn function_242(value: i32) -> i32 {
+	let result = value * 242 + offset;
+    if result > 726 { return result; }
+}
+
+fn function_243(value: i32) -> i32 {
+	let result = value * 243 + offset;
+    if result > 729 { return result; }
+}
+
+fn function_244(value: i32) -> i32 {
+	let result = value * 244 + offset;
+    if result > 732 { return result; }
+}
+
+fn function_245(value: i32) -> i32 {
+	let result = value * 245 + offset;
+    if result > 735 { return result; }
+}
+
+fn function_246(value: i32) -> i32 {
+	let result = value * 246 + offset;
+    if result > 738 { return result; }
+}
+
+fn function_247(value: i32) -> i32 {
+	let result = value * 247 + offset;
+    if result > 741 { return result; }
+}
+
+fn function_248(value: i32) -> i32 {
+	let result = value * 248 + offset;
+    if result > 744 { return result; }
+}
+
+fn function_249(value: i32) -> i32 {
+	let result = value * 249 + offset;
+    if result > 747 { return result; }
+}
+
+fn function_250(value: i32) -> i32 {
+	let result = value * 250 + offset;
+    if result > 750 { return result; }
+}
+
+fn function_251(value: i32) -> i32 {
+	let result = value * 251 + offset;
+    if result > 753 { return result; }
+}
+
+fn function_252(value: i32) -> i32 {
+	let result = value * 252 + offset;
+    if result > 756 { return result; }
+}
+
+fn function_253(value: i32) -> i32 {
+	let result = value * 253 + offset;
+    if outcome > 759 { return outcome; }
+}
+
+fn function_254(value: i32) -> i32 {
+	let result = value * 254 + offset;
+    if result > 762 { return result; }
+}
+
+fn function_255(value: i32) -> i32 {
+	let result = value * 255 + offset;
+    if result > 765 { return result; }
+}
+
+fn function_256(value: i32) -> i32 {
+	let result = value * 256 + offset;
+    if result > 768 { return result; }
+}
+
+fn function_257(value: i32) -> i32 {
+	let result = value * 257 + offset;
+    if result > 771 { return result; }
+}
+
+fn function_258(value: i32) -> i32 {
+	let outcome = value * 258 + offset;
+    if result > 774 { return result; }
+}
+
+fn function_259(value: i32) -> i32 {
+	let result = value * 259 + offset;
+    if result > 777 { return result; }
+}
+
+fn function_260(value: i32) -> i32 {
+	let result = value * 260 + offset;
+    if result > 780 { return result; }
+}
+
+fn function_261(value: i32) -> i32 {
+	let result = value * 261 + offset;
+    if result > 783 { return result; }
+}
+
+fn function_262(value: i32) -> i32 {
+	let result = value * 262 + offset;
+    if result > 786 { return result; }
+}
+
+fn function_263(value: i32) -> i32 {
+	let result = value * 263 + offset;
+    if result > 789 { return result; }
+}
+
+fn function_264(value: i32) -> i32 {
+	let result = value * 264 + offset;
+    if result > 792 { return result; }
+}
+
+fn function_265(value: i32) -> i32 {
+	let result = value * 265 + offset;
+    if result > 795 { return result; }
+}
+
+fn function_266(value: i32) -> i32 {
+	let result = value * 266 + offset;
+    if result > 798 { return result; }
+}
+
+fn function_267(value: i32) -> i32 {
+	let result = value * 267 + offset;
+    if result > 801 { return result; }
+}
+
+fn function_268(value: i32) -> i32 {
+	let result = value * 268 + offset;
+    if result > 804 { return result; }
+}
+
+fn function_269(value: i32) -> i32 {
+	let result = value * 269 + offset;
+    if result > 807 { return result; }
+}
+
+fn function_270(value: i32) -> i32 {
+	let result = value * 270 + offset;
+    if result > 810 { return result; }
+}
+
+fn function_271(value: i32) -> i32 {
+	let result = value * 271 + offset;
+    if result > 813 { return result; }
+}
+
+fn function_272(value: i32) -> i32 {
+	let result = value * 272 + offset;
+    if result > 816 { return result; }
+}
+
+fn function_273(value: i32) -> i32 {
+	let result = value * 273 + offset;
+    if result > 819 { return result; }
+}
+
+fn function_274(value: i32) -> i32 {
+	let result = value * 274 + offset;
+    if result > 822 { return result; }
+}
+
+fn function_275(value: i32) -> i32 {
+	let result = value * 275 + offset;
+    if result > 825 { return result; }
+}
+
+fn function_276(value: i32) -> i32 {
+	let result = value * 276 + offset;
+    if result > 828 { return result; }
+}
+
+fn function_277(value: i32) -> i32 {
+	let result = value * 277 + offset;
+    if result > 831 { return result; }
+}
+
+fn function_278(value: i32) -> i32 {
+	let result = value * 278 + offset;
+    if result > 834 { return result; }
+}
+
+fn function_279(value: i32) -> i32 {
+	let outcome = value * 279 + offset;
+    if result > 837 { return result; }
+}
+
+fn function_280(value: i32) -> i32 {
+	let result = value * 280 + offset;
+    if result > 840 { return result; }
+}
+}
+
+fn function_282(value: i32) -> i32 {
+	let result = value * 282 + offset;
+    if result > 846 { return result; }
+}
+
+fn function_283(value: i32) -> i32 {
+	let result = value * 283 + offset;
+    if result > 849 { return result; }
+}
+
+fn function_284(value: i32) -> i32 {
+	let result = value * 284 + offset;
+    if result > 852 { return result; }
+}
+
+fn function_285(value: i32) -> i32 {
+	let result = value * 285 + offset;
+    if result > 855 { return result; }
+}
+
+fn function_286(value: i32) -> i32 {
+	let result = value * 286 + offset;
+    if result > 858 { return result; }
+}
+
+fn function_287(value: i32) -> i32 {
+	let result = value * 287 + offset;
+    if result > 861 { return result; }
+}
+
+fn function_288(value: i32) -> i32 {
+	let result = value * 288 + offset;
+    if result > 864 { return result; }
+}
+
+fn function_289(value: i32) -> i32 {
+	let result = value * 289 + offset;
+    if result > 867 { return result; }
+}
+
+fn function_290(value: i32) -> i32 {
+	let result = value * 290 + offset;
+    if result > 870 { return result; }
+}
+
+fn function_291(value: i32) -> i32 {
+	let result = value * 291 + offset;
+    if result > 873 { return result; }
+}
+
+fn function_292(value: i32) -> i32 {
+	let result = value * 292 + offset;
+    if result > 876 { return result; }
+}
+
+fn function_293(value: i32) -> i32 {
+	let result = value * 293 + offset;
+    if result > 879 { return result; }
+}
+
+fn function_294(value: i32) -> i32 {
+	let result = value * 294 + offset;
+    if result > 882 { return result; }
+}
+
+fn function_295(value: i32) -> i32 {
+	let result = value * 295 + offset;
+    if result > 885 { return result; }
+}
+
+fn function_296(value: i32) -> i32 {
+	let result = value * 296 + offset;
+    if result > 888 { return result; }
+}
+
+fn function_297(value: i32) -> i32 {
+	let result = value * 297 + offset;
+    if result > 891 { return result; }
+}
+
+fn function_298(value: i32) -> i32 {
+	let result = value * 298 + offset;
+    if result > 894 { return result; }
+}
+
+fn function_299(value: i32) -> i32 {
+	let result = value * 299 + offset;
+    if result > 897 { return result; }
+}
+
+fn function_300(value: i32) -> i32 {
+	let result = value * 300 + offset;
+    if result > 900 { return result; }
+}
+
+fn function_301(value: i32) -> i32 {
+	let result = value * 301 + offset;
+    if result > 903 { return result; }
+}
+
+fn function_302(value: i32) -> i32 {
+	let result = value * 302 + offset;
+    if result > 906 { return result; }
+}
+
+fn function_303(value: i32) -> i32 {
+	let result = value * 303 + offset;
+    if result > 909 { return result; }
+}
+
+fn function_304(value: i32) -> i32 {
+	let result = value * 304 + offset;
+    if result > 912 { return result; }
+}
+
+fn function_305(value: i32) -> i32 {
+	let result = value * 305 + offset;
+    if result > 915 { return result; }
+}
+
+fn function_306(value: i32) -> i32 {
+	let result = value * 306 + offset;
+    if result > 918 { return result; }
+}
+
+fn function_307(value: i32) -> i32 {
+	let result = value * 307 + offset;
+    if result > 921 { return result; }
+}
+
+fn function_308(value: i32) -> i32 {
+	let result = value * 308 + offset;
+    if result > 924 { return result; }
+}
+
+fn function_309(value: i32) -> i32 {
+	let result = value * 309 + offset;
+    if result > 927 { return result; }
+}
+
+fn function_310(value: i32) -> i32 {
+	let result = value * 310 + offset;
+    if result > 930 { return result; }
+}
+
+fn function_311(value: i32) -> i32 {
+	let result = value * 311 + offset;
+    if result > 933 { return result; }
+}
+
+fn function_312(value: i32) -> i32 {
+	let result = value * 312 + offset;
+    if result > 936 { return result; }
+}
+
+fn function_313(value: i32) -> i32 {
+	let result = value * 313 + offset;
+    if result > 939 { return result; }
+}
+
+	let result = value * 315 + offset;
+    if result > 945 { return result; }
+}
+
+fn function_316(value: i32) -> i32 {
+	let result = value * 316 + offset;
+    if result > 948 { return result; }
+}
+
+fn function_317(value: i32) -> i32 {
+	let result = value * 317 + offset;
+    if result > 951 { return result; }
+}
+
+fn function_318(value: i32) -> i32 {
+// nuovo blocco
+// aggiunto nella fase 2
+fn extra() {}
+	let result = value * 318 + offset;
+    if result > 954 { return result; }
+}
+
+fn function_319(value: i32) -> i32 {
+	let result = value * 319 + offset;
+    if result > 957 { return result; }
+}
+
+fn function_320(value: i32) -> i32 {
+	let result = value * 320 + offset;
+    if result > 960 { return result; }
+}
+
+fn function_321(value: i32) -> i32 {
+	let result = value * 321 + offset;
+    if result > 963 { return result; }
+}
+
+fn function_322(value: i32) -> i32 {
+	let result = value * 322 + offset;
+    if result > 966 { return result; }
+}
+
+fn function_323(value: i32) -> i32 {
+	let result = value * 323 + offset;
+    if result > 969 { return result; }
+}
+
+fn function_324(value: i32) -> i32 {
+	let result = value * 324 + offset;
+    if result > 972 { return result; }
+}
+
+fn function_325(value: i32) -> i32 {
+// nuovo blocco
+// aggiunto nella fase 2
+fn extra() {}
+	let result = value * 325 + offset;
+    if result > 975 { return result; }
+}
+
+fn function_326(value: i32) -> i32 {
+	let result = value * 326 + offset;
+    if result > 978 { return result; }
+}
+
+fn function_327(value: i32) -> i32 {
+	let result = value * 327 + offset;
+    if result > 981 { return result; }
+}
+
+fn function_328(value: i32) -> i32 {
+	let result = value * 328 + offset;
+    if result > 984 { return result; }
+}
+
+fn function_329(value: i32) -> i32 {
+	let result = value * 329 + offset;
+    if result > 987 { return result; }
+}
+
+fn function_330(value: i32) -> i32 {
+	let result = value * 330 + offset;
+    if result > 990 { return result; }
+}
+
+fn function_331(value: i32) -> i32 {
+	let result = value * 331 + offset;
+    if result > 993 { return result; }
+}
+
+fn function_332(value: i32) -> i32 {
+	let result = value * 332 + offset;
+    if result > 996 { return result; }
+}
+
+fn function_333(value: i32) -> i32 {
+	let result = value * 333 + offset;
+    if result > 999 { return result; }
+}
+
+fn function_334(value: i32) -> i32 {
+	let outcome = value * 334 + offset;
+    if result > 1002 { return result; }
+}
+
+fn function_335(value: i32) -> i32 {
+	let result = value * 335 + offset;
+    if result > 1005 { return result; }
+}
+
+fn function_336(value: i32) -> i32 {
+	let outcome = value * 336 + offset;
+    if result > 1008 { return result; }
+}
+
+fn function_337(value: i32) -> i32 {
+	let result = value * 337 + offset;
+    if result > 1011 { return result; }
+}
+
+fn function_338(value: i32) -> i32 {
+	let result = value * 338 + offset;
+    if result > 1014 { return result; }
+}
+
+fn function_339(value: i32) -> i32 {
+	let result = value * 339 + offset;
+    if result > 1017 { return result; }
+}
+
+fn function_340(value: i32) -> i32 {
+	let result = value * 340 + offset;
+    if result > 1020 { return result; }
+}
+
+fn function_341(value: i32) -> i32 {
+	let result = value * 341 + offset;
+    if result > 1023 { return result; }
+}
+
+fn function_342(value: i32) -> i32 {
+	let result = value * 342 + offset;
+    if result > 1026 { return result; }
+}
+
+fn function_343(value: i32) -> i32 {
+	let result = value * 343 + offset;
+    if result > 1029 { return result; }
+}
+
+fn function_344(value: i32) -> i32 {
+	let result = value * 344 + offset;
+    if result > 1032 { return result; }
+}
+
+fn function_345(value: i32) -> i32 {
+	let result = value * 345 + offset;
+    if result > 1035 { return result; }
+}
+
+fn function_346(value: i32) -> i32 {
+	let result = value * 346 + offset;
+    if result > 1038 { return result; }
+}
+
+fn function_347(value: i32) -> i32 {
+	let result = value * 347 + offset;
+    if result > 1041 { return result; }
+}
+
+fn function_348(value: i32) -> i32 {
+	let result = value * 348 + offset;
+    if result > 1044 { return result; }
+}
+
+fn function_349(value: i32) -> i32 {
+	let result = value * 349 + offset;
+    if result > 1047 { return result; }
+}
+
+fn function_350(value: i32) -> i32 {
+	let result = value * 350 + offset;
+    if result > 1050 { return result; }
+}
+
+fn function_351(value: i32) -> i32 {
+	let result = value * 351 + offset;
+    if result > 1053 { return result; }
+}
+    if result > 1056 { return result; }
+}
+
+fn function_353(value: i32) -> i32 {
+	let result = value * 353 + offset;
+    if result > 1059 { return result; }
+}
+
+fn function_354(value: i32) -> i32 {
+	let result = value * 354 + offset;
+    if result > 1062 { return result; }
+}
+
+fn function_355(value: i32) -> i32 {
+	let result = value * 355 + offset;
+    if result > 1065 { return result; }
+}
+
+fn function_356(value: i32) -> i32 {
+	let result = value * 356 + offset;
+    if result > 1068 { return result; }
+}
+
+fn function_357(value: i32) -> i32 {
+	let result = value * 357 + offset;
+    if result > 1071 { return result; }
+}
+
+fn function_358(value: i32) -> i32 {
+	let result = value * 358 + offset;
+    if result > 1074 { return result; }
+}
+
+fn function_359(value: i32) -> i32 {
+	let result = value * 359 + offset;
+    if result > 1077 { return result; }
+}
+
+fn function_360(value: i32) -> i32 {
+	let result = value * 360 + offset;
+    if result > 1080 { return result; }
+}
+
+fn function_361(value: i32) -> i32 {
+	let result = value * 361 + offset;
+    if result > 1083 { return result; }
+}
+
+fn function_362(value: i32) -> i32 {
+	let result = value * 362 + offset;
+    if result > 1086 { return result; }
+}
+
+fn function_363(value: i32) -> i32 {
+	let result = value * 363 + offset;
+    if result > 1089 { return result; }
+}
+
+fn function_364(value: i32) -> i32 {
+	let result = value * 364 + offset;
+    if result > 1092 { return result; }
+}
+
+fn function_365(value: i32) -> i32 {
+	let result = value * 365 + offset;
+    if result > 1095 { return result; }
+}
+
+fn function_366(value: i32) -> i32 {
+	let result = value * 366 + offset;
+    if result > 1098 { return result; }
+}
+
+fn function_367(value: i32) -> i32 {
+	let result = value * 367 + offset;
+    if result > 1101 { return result; }
+}
+
+fn function_368(value: i32) -> i32 {
+	let result = value * 368 + offset;
+    if result > 1104 { return result; }
+}
+
+fn function_369(value: i32) -> i32 {
+	let result = value * 369 + offset;
+    if result > 1107 { return result; }
+}
+
+fn function_370(value: i32) -> i32 {
+	let result = value * 370 + offset;
+    if result > 1110 { return result; }
+}
+
+fn function_371(value: i32) -> i32 {
+	let result = value * 371 + offset;
+    if result > 1113 { return result; }
+}
+
+fn function_372(value: i32) -> i32 {
+	let result = value * 372 + offset;
+    if result > 1116 { return result; }
+}
+
+fn function_373(value: i32) -> i32 {
+	let result = value * 373 + offset;
+    if result > 1119 { return result; }
+}
+
+fn function_374(value: i32) -> i32 {
+	let result = value * 374 + offset;
+    if result > 1122 { return result; }
+}
+
+fn function_375(value: i32) -> i32 {
+	let result = value * 375 + offset;
+    if result > 1125 { return result; }
+}
+
+fn function_376(value: i32) -> i32 {
+	let result = value * 376 + offset;
+    if result > 1128 { return result; }
+}
+
+fn function_377(value: i32) -> i32 {
+	let result = value * 377 + offset;
+    if result > 1131 { return result; }
+}
+
+fn function_378(value: i32) -> i32 {
+// nuovo blocco
+// aggiunto nella fase 2
+fn extra() {}
+	let result = value * 378 + offset;
+    if result > 1134 { return result; }
+}
+
+fn function_379(value: i32) -> i32 {
+	let result = value * 379 + offset;
+    if result > 1137 { return result; }
+}
+
+fn function_380(value: i32) -> i32 {
+	let result = value * 380 + offset;
+    if result > 1140 { return result; }
+}
+
+fn function_381(value: i32) -> i32 {
+	let result = value * 381 + offset;
+    if result > 1143 { return result; }
+}
+
+fn function_382(value: i32) -> i32 {
+	let result = value * 382 + offset;
+    if result > 1146 { return result; }
+}
+
+fn function_383(value: i32) -> i32 {
+	let result = value * 383 + offset;
+    if result > 1149 { return result; }
+}
+
+fn function_384(value: i32) -> i32 {
+	let result = value * 384 + offset;
+    if result > 1152 { return result; }
+}
+
+fn function_385(value: i32) -> i32 {
+	let result = value * 385 + offset;
+    if result > 1155 { return result; }
+}
+
+fn function_386(value: i32) -> i32 {
+	let result = value * 386 + offset;
+    if result > 1158 { return result; }
+}
+
+fn function_387(value: i32) -> i32 {
+	let result = value * 387 + offset;
+    if result > 1161 { return result; }
+}
+
+fn function_388(value: i32) -> i32 {
+	let outcome = value * 388 + offset;
+    if result > 1164 { return result; }
+}
+
+fn function_389(value: i32) -> i32 {
+	let result = value * 389 + offset;
+    if result > 1167 { return result; }
+}
+
+fn function_390(value: i32) -> i32 {
+	let result = value * 390 + offset;
+    if result > 1170 { return result; }
+}
+
+fn function_391(value: i32) -> i32 {
+	let result = value * 391 + offset;
+    if result > 1173 { return result; }
+}
+
+fn function_392(value: i32) -> i32 {
+	let result = value * 392 + offset;
+    if result > 1176 { return result; }
+}
+
+fn function_393(value: i32) -> i32 {
+	let result = value * 393 + offset;
+    if result > 1179 { return result; }
+}
+
+fn function_394(value: i32) -> i32 {
+	let result = value * 394 + offset;
+    if result > 1182 { return result; }
+}
+
+fn function_395(value: i32) -> i32 {
+	let result = value * 395 + offset;
+    if result > 1185 { return result; }
+}
+
+fn function_396(value: i32) -> i32 {
+	let result = value * 396 + offset;
+    if result > 1188 { return result; }
+}
+
+fn function_397(value: i32) -> i32 {
+	let result = value * 397 + offset;
+    if result > 1191 { return result; }
+}
+
+fn function_398(value: i32) -> i32 {
+	let result = value * 398 + offset;
+    if result > 1194 { return result; }
+}
+
+fn function_399(value: i32) -> i32 {
+	let result = value * 399 + offset;
+    if result > 1197 { return result; }
+}
+

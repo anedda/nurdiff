@@ -1,0 +1,301 @@
+/* Map view of the folder comparison */
+.dir-map-view {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: var(--fs);
+}
+
+.dir-map-view {
+  container-type: inline-size;
+  outline: none;
+}
+
+.dir-map-view:focus-visible {
+  border-color: var(--accent);
+}
+
+.map-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.map-up,
+.map-panel-toggle {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--fg);
+  cursor: pointer;
+}
+
+.map-up svg,
+.map-panel-toggle svg {
+  flex: none;
+}
+
+.map-up:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.map-panel-toggle {
+  margin-left: auto;
+}
+
+.map-panel-toggle.on {
+  background: color-mix(in srgb, var(--accent) 18%, var(--bg));
+  border-color: var(--accent);
+}
+
+.map-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px;
+}
+
+.map-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* "Not compared": an empty dot, as in the summary pills, so it is not confused with the identical ones. */
+.map-chip.notCompared .map-dot {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--muted);
+}
+
+.map-dot,
+.mp-dot {
+  display: inline-block;
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c, var(--muted));
+}
+
+.map-chip {
+  --c: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 1px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--c);
+  background: color-mix(in srgb, var(--c) 18%, var(--bg));
+  font-size: 0.85em;
+  white-space: nowrap;
+}
+
+
+.map-crumb-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  color: var(--muted);
+}
+
+.map-crumb {
+  border: 0;
+  background: none;
+  color: var(--fg);
+  font: inherit;
+  padding: 1px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.map-crumb:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--fg) 10%, transparent);
+}
+
+.map-crumb:disabled {
+  cursor: default;
+  font-weight: 600;
+}
+
+.map-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
+.dir-map {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.map-group,
+.map-cell {
+  position: absolute;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Only the selection ring below marks a cell: the browser's own focus ring would add to it. */
+.map-group:focus,
+.map-cell:focus {
+  outline: none;
+}
+
+.map-group {
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.map-group {
+  cursor: default;
+}
+
+.map-group:hover {
+  border-color: color-mix(in srgb, var(--fg) 40%, var(--border));
+}
+
+/*
+ * The selection ring is always the accent colour, whatever the colour of the cell. A darker band inside it keeps it
+ * apart from a blue cell ("left only"), whose own colour is close to the accent.
+ */
+.map-group.selected {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+  box-shadow: inset 0 0 0 4px color-mix(in srgb, var(--bg) 70%, transparent);
+}
+
+.map-group-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  height: 24px;
+  padding: 0 8px;
+  box-sizing: border-box;
+  color: var(--fg);
+  font-size: 0.85em;
+  font-weight: 600;
+  text-align: left;
+}
+
+.map-group-head .map-label {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+}
+
+.map-group-icon {
+  flex: none;
+  display: flex;
+  color: var(--muted);
+}
+
+.map-badges {
+  flex: none;
+  display: flex;
+  gap: 4px;
+}
+
+.map-badge {
+  --c: var(--muted);
+  padding: 0 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--c) 20%, var(--bg));
+  color: var(--c);
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+.map-badge.identical { color: var(--muted); }
+
+.map-group-size {
+  white-space: nowrap;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.map-cell {
+  --c: var(--muted);
+  background: color-mix(in srgb, var(--c) 24%, var(--bg));
+  border: 1px solid color-mix(in srgb, var(--c) 55%, var(--bg));
+  cursor: default;
+}
+
+.map-cell.identical {
+  background: color-mix(in srgb, var(--muted) 14%, var(--bg));
+  border-color: color-mix(in srgb, var(--muted) 30%, var(--bg));
+}
+
+.map-cell:hover {
+  background: color-mix(in srgb, var(--c) 38%, var(--bg));
+}
+
+.map-cell.selected {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+  box-shadow: inset 0 0 0 4px color-mix(in srgb, var(--bg) 70%, transparent);
+}
+
+/* Not compared: the light hatching of the empty rows of the panes, so it is not read as a status. */
+.map-cell.notCompared {
+  background: repeating-linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--muted) 10%, var(--bg)) 0 6px,
+    color-mix(in srgb, var(--muted) 22%, var(--bg)) 6px 7px
+  );
+  border-style: dashed;
+}
+
+.map-cell.cluster {
+  border-style: dashed;
+}
+
+.map-cell.mixed {
+  background: color-mix(in srgb, var(--muted) 22%, var(--bg));
+  border-color: var(--muted);
+}
+
+.map-names {
+  white-space: normal;
+  font-size: 0.85em;
+  color: var(--muted);
+}
+
+.map-label {
+  display: block;
+  padding: 1px 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.dir-map .notice {
+  margin: 12px;
+}
+
+
+/* The file size under the name, thinner. */
+.map-size {
+  margin-top: -2px;
+  font-size: var(--fs-sm);
+  color: color-mix(in srgb, var(--fg) 65%, transparent);
+}

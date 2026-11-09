@@ -1,0 +1,7 @@
+target
+out
+dist
+node_modules
+src-tauri/gen
+.git
+*.zip

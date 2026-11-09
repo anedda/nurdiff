@@ -1,0 +1,301 @@
+/* --- Side-by-side view of the files: two virtualized panes + overview bar --- */
+
+.viewer {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pane {
+  min-width: 0;
+  overflow: auto;
+  font-family: var(--mono);
+  font-size: var(--code-size, 13px);
+  /* Rows appear and disappear while scrolling: the browser must not readjust the position. */
+  overflow-anchor: none;
+  overscroll-behavior: contain;
+}
+
+/* The left pane follows the right one: no bars, but it stays scrollable. */
+.pane.left {
+  scrollbar-width: none;
+  border-right: 1px solid var(--border);
+}
+
+.pane.left::-webkit-scrollbar {
+  display: none;
+}
+
+/* The right pane keeps only the horizontal bar: the vertical one is the overview
+   (otherwise there would be two bars side by side). The height is the one the left pane reserves. */
+.pane.right::-webkit-scrollbar {
+  height: 16px;
+  width: 0;
+}
+
+.pane.right::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.pane.right::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--muted) 45%, transparent);
+  border-radius: 8px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+.pane-inner {
+  position: relative;
+}
+
+.vrow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  line-height: 20px;
+}
+
+.vrow .num {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  flex: none;
+  width: 4.5rem;
+  padding: 0 0.5rem;
+  text-align: right;
+  color: var(--muted);
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/*
+ * The button that copies the row to the other side sits on the edge the two panes share: the right end of the left
+ * pane, the left end of the right one. Its box has no width, so it does not move the row, and it stays at the edge of
+ * the window when the pane scrolls sideways. It appears on the row under the pointer or the selected one.
+ */
+.row-copy {
+  position: sticky;
+  flex: none;
+  width: 0;
+  height: 20px;
+  z-index: 2;
+  opacity: 0;
+}
+
+.pane.left .row-copy {
+  right: 0;
+  order: 1;
+  margin-left: auto;
+}
+
+.pane.right .row-copy {
+  left: 0;
+}
+
+.row-copy button {
+  position: absolute;
+  top: 1px;
+  width: 22px;
+  height: 18px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.row-copy button svg {
+  width: 14px;
+  height: 14px;
+}
+
+.pane.left .row-copy button {
+  right: 6px;
+}
+
+.pane.right .row-copy button {
+  left: 6px;
+}
+
+/* In the unified view there is a single pane: the button goes to its right edge, like in the left pane. */
+.pane.unified .row-copy {
+  left: auto;
+  right: 0;
+  order: 1;
+  margin-left: auto;
+}
+
+.pane.unified .row-copy button {
+  left: auto;
+  right: 6px;
+}
+
+.row-copy button:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.vrow:hover .row-copy,
+.vrow.selected .row-copy,
+.row-copy:focus-within {
+  opacity: 1;
+}
+
+.vrow .code {
+  padding: 0 1rem 0 0.5rem;
+  white-space: pre;
+  tab-size: 4;
+}
+
+.vrow.chg {
+  background: var(--chg);
+}
+
+.vrow.del {
+  background: var(--del);
+}
+
+.vrow.add {
+  background: var(--add);
+}
+
+/* Differing parts inside a modified row */
+.vrow .ie {
+  background: var(--chg-hi);
+  color: inherit;
+  border-radius: 2px;
+}
+
+/* Row requested from Rust and not arrived yet */
+.vrow.loading {
+  background: color-mix(in srgb, var(--muted) 8%, transparent);
+}
+
+/* Side where the row does not exist: light hatching */
+.vrow.void {
+  background: repeating-linear-gradient(
+    135deg,
+    transparent 0 6px,
+    color-mix(in srgb, var(--muted) 14%, transparent) 6px 7px
+  );
+}
+
+.vrow.current .num {
+  color: var(--fg);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+/* --- Overview bar --- */
+
+.overview {
+  position: relative;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+}
+
+.overview .mark {
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  min-height: 3px;
+  border-radius: 1px;
+  pointer-events: none; /* the click is handled by the bar: see onOverviewClick */
+}
+
+.overview .mark.changed {
+  background: var(--chg-fg);
+}
+
+.overview .mark.leftOnly {
+  background: var(--del-fg);
+}
+
+.overview .mark.rightOnly {
+  background: var(--add-fg);
+}
+
+.overview .mark.current {
+  outline: 2px solid var(--accent);
+  z-index: 1;
+}
+
+.overview .viewport {
+  position: absolute;
+  left: 0;
+  right: 0;
+  min-height: 8px;
+  background: color-mix(in srgb, var(--muted) 22%, transparent);
+  border-top: 1px solid var(--muted);
+  border-bottom: 1px solid var(--muted);
+  pointer-events: none;
+}
+
+
+/* The selection stays in the pane where it starts (the attribute is set by FileDiffView on click); in the unified view there is only one pane. */
+.viewer:not(.unified)[data-select="left"] .pane.right,
+.viewer:not(.unified)[data-select="right"] .pane.left {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* The copy icon at the top right of a pane, while there is selected text: a zero-height sticky container. */
+.pane-copy {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  width: 100%;
+  height: 0;
+}
+
+.pane-copy-btn,
+.pane-range-btn {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--muted);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+
+/* Copy the selected rows to the other side: next to the copy icon, with the number of rows. */
+.pane-copy-range {
+  right: 40px;
+  width: auto;
+  min-width: 26px;
+  padding: 0 8px;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.pane-copy-btn:hover,
+.pane-range-btn:hover {
+  color: var(--fg);
+  background: color-mix(in srgb, var(--fg) 8%, var(--surface));
+}

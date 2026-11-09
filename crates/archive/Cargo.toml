@@ -1,0 +1,17 @@
+[package]
+name = "nurdiff-archive"
+description = "Reads archives (zip, tar) so that NurDiff can compare their contents like a folder"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+
+[dependencies]
+flate2 = "1.1.10"
+nurdiff-core = { path = "../core" }
+tar = { version = "0.4.46", default-features = false }
+zip = { version = "9.1.2", default-features = false, features = ["deflate"] }
+
+[dev-dependencies]
+tempfile = "3"

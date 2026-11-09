@@ -1,0 +1,464 @@
+/* --- Home and choice of the kind of comparison --- */
+
+.home {
+  height: 100%;
+  overflow: auto;
+  padding: 32px 40px 0;
+  max-width: 72rem;
+  width: 100%;
+  margin: 0 auto;
+  /* The line with the version stays at the bottom, also when there is little to show. */
+  display: flex;
+  flex-direction: column;
+}
+
+/* The logo to the left of the title and the line under it. */
+.home-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 24px;
+}
+
+.home-title-text .lead {
+  margin: 2px 0 0;
+}
+
+.home h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.home h2,
+.chooser h2 {
+  font-size: 1rem;
+  margin: 0 0 8px;
+}
+
+/* The version at the foot of the Home: muted, and a click opens "About". */
+.build-line {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--muted);
+}
+
+.home-foot {
+  margin-top: auto;
+  padding: 14px 0 16px;
+  border-top: 1px solid var(--border);
+  text-align: right;
+}
+
+.home-foot,
+.recents,
+.tips,
+.home-drop,
+.home-cards {
+  flex: none;
+}
+
+.link-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.link-button:hover,
+.link-button:focus-visible {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* The "label: value" rows of the About window. */
+.about-info {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 4px 14px;
+  margin: 10px 0 0;
+}
+
+.about-info dt {
+  color: var(--muted);
+}
+
+.about-info dd {
+  margin: 0;
+  user-select: text;
+}
+
+.lead {
+  margin: 0 0 24px;
+  color: var(--muted);
+}
+
+.chooser {
+  padding: 28px 20px 8px;
+}
+
+.chooser-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 18rem;
+  padding: 14px 16px;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.card:hover,
+.card:focus-visible {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.card span {
+  color: var(--muted);
+  font-size: var(--fs);
+}
+
+.hint,
+.muted {
+  color: var(--muted);
+}
+
+.recents,
+.tips {
+  margin-top: 28px;
+}
+
+.recents-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.recents-head h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.count-badge {
+  padding: 0 8px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+}
+
+/* "Clear the list": a button with the bin, as in the mockup. */
+.clear-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.clear-btn:hover,
+.clear-btn:focus-visible {
+  border-color: var(--accent);
+  outline: none;
+}
+
+/* The recents: one box with a row for each comparison. */
+.recent-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.recent-item {
+  position: relative;
+  border-bottom: 1px solid var(--border);
+}
+
+.recent-item:last-child {
+  border-bottom: 0;
+}
+
+.recent {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 12px 14px;
+  /* Room on the right for the "remove" button that appears over the row. */
+  padding-right: 2.6rem;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.recent:hover,
+.recent:focus-visible {
+  background: var(--surface);
+  outline: none;
+}
+
+.recent-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.recent-body {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.recent-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.recent-names {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.recent-paths {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+}
+
+/* A path that does not fit loses its beginning: the end is what tells the files apart. */
+.recent-path {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.side-dot-inline {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.side-dot-inline.left {
+  background: var(--orphan);
+}
+
+.side-dot-inline.right {
+  background: var(--orphan-r);
+}
+
+.recent-date {
+  flex: none;
+  color: var(--muted);
+  font-size: var(--fs);
+  white-space: nowrap;
+}
+
+.recent-go {
+  flex: none;
+  display: grid;
+  color: var(--muted);
+}
+
+/* Taking a comparison off the list: over the right end of the row, visible when the row is pointed at or reached by the keyboard. */
+.recent-remove {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  margin-top: -13px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--muted);
+  cursor: pointer;
+  opacity: 0;
+}
+
+.recent-item:hover .recent-remove,
+.recent-item:focus-within .recent-remove {
+  opacity: 1;
+}
+
+.recent-item:hover .recent-go,
+.recent-item:focus-within .recent-go {
+  visibility: hidden;
+}
+
+.recent-remove:hover,
+.recent-remove:focus-visible {
+  color: var(--del-fg);
+  outline: none;
+}
+
+.link {
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+.badge {
+  justify-self: start;
+  padding: 1px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: var(--fs-sm);
+}
+
+
+/* The two cards that start a comparison: icon, shortcut, title and what it does. */
+.home-cards {
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+.home-card {
+  position: relative;
+  flex: 1 1 22rem;
+  width: auto;
+  gap: 6px;
+  padding: 18px 20px;
+  border-radius: 12px;
+}
+
+.card-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 12px;
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--border));
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent) 12%, var(--bg));
+  color: var(--accent);
+}
+
+.card-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.home-card strong {
+  font-size: 1.05rem;
+}
+
+.card .card-desc {
+  color: var(--muted);
+}
+
+.home kbd {
+  padding: 1px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+  white-space: nowrap;
+}
+
+.card-key {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+}
+
+/* A visible place to drop files: the window takes them anywhere, but this says so. */
+.home-drop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  color: var(--muted);
+}
+
+.home-drop strong {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+/* The tips: three small cards, under a title in the same style as the one of the recents. */
+.tips h2 {
+  margin: 0 0 10px;
+}
+
+.tip-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 14px;
+}
+
+.tip-card {
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.tip-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.tip-card p {
+  margin: 0;
+  color: var(--muted);
+}

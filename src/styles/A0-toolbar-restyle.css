@@ -1,0 +1,459 @@
+/* Toolbar of the file comparison: the same height (32 px), the same corners and the same focus ring. */
+.tb-square,
+.merge-btn,
+.opt-select {
+  border-radius: 6px;
+}
+
+.view-switch .seg {
+  box-sizing: border-box;
+  height: 32px;
+  border-radius: 6px;
+}
+
+.view-switch .seg-btn {
+  display: inline-flex;
+  align-items: center;
+}
+
+.tb-square:focus-visible,
+.merge-btn:focus-visible,
+.seg-btn:focus-visible,
+.opt-select:has(select:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.opt-select select:focus,
+.opt-select select:focus-visible {
+  outline: none;
+}
+
+/* "Aa" is the only text icon: the same size and weight as the others. */
+.tb-icon.tb-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.tb-icon svg {
+  display: block;
+}
+
+/* File comparison bar in a box: a single row, all the controls with a border, no labels under the groups. */
+.dirbar.tb-card {
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 8px;
+  padding: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.tb-card .tb-cluster {
+  padding: 0;
+}
+
+.tb-card .tb-square,
+.tb-card .merge-btn,
+.tb-card .opt-select {
+  background: var(--bg);
+  border-color: var(--border);
+}
+
+.tb-card .tb-square:hover:not(:disabled),
+.tb-card .merge-btn:hover:not(:disabled),
+.tb-card .opt-select:hover:not(:has(select:disabled)) {
+  border-color: var(--accent);
+}
+
+.tb-card .tb-square[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--accent) 18%, var(--bg));
+  border-color: var(--accent);
+}
+
+/* Navigation: a single control with the arrows at the ends and the counter in the middle. */
+.tb-card .diff-nav {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+}
+
+.tb-card .diff-nav .cluster-row {
+  gap: 0;
+}
+
+.tb-card .diff-nav .tb-square {
+  background: transparent;
+  border-color: transparent;
+}
+
+.tb-card .nav-count {
+  min-width: 48px;
+  padding: 0 4px;
+  border: 0;
+  border-radius: 0;
+}
+
+.tb-card .tb-sep {
+  height: 24px;
+}
+
+.opt-name {
+  color: var(--muted);
+  font-size: var(--fs);
+  white-space: nowrap;
+}
+
+/* Refresh is on the right: it is neither an option nor a merge action. */
+.refresh-btn {
+  margin-left: auto;
+}
+
+.row-filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.row-filter-label {
+  color: var(--muted);
+}
+
+/* Addresses and toolbar: the same raised background (--surface), containers at 10 px, inner controls at 8 px, rows of 36 px. */
+.paths input,
+.paths .swap-btn,
+.paths button.primary {
+  box-sizing: border-box;
+  height: 36px;
+  border-radius: 10px;
+}
+
+.paths input,
+.paths .swap-btn {
+  background: var(--surface);
+}
+
+.tb-square,
+.merge-btn,
+.opt-select,
+.view-switch .seg {
+  border-radius: 8px;
+}
+
+/* Compact bar: a single row, icons only; the summary is in the bar, on the right, and the menus of the spaces and of the algorithm in "Options". */
+.tb-compact .tb-label {
+  display: none;
+}
+
+.tb-compact .merge-btn,
+.tb-compact .view-switch .seg-btn {
+  width: 32px;
+  padding: 0;
+  justify-content: center;
+}
+
+.tb-compact .view-switch .seg-btn {
+  width: 28px;
+  height: 26px;
+}
+
+.tb-compact .view-switch .seg-btn svg {
+  margin-right: 0;
+}
+
+.tb-compact .refresh-btn {
+  margin-left: 0;
+}
+
+.tb-summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.opts-popup {
+  position: relative;
+}
+
+.opts-button {
+  font: inherit;
+  color: inherit;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 0 8px;
+  cursor: pointer;
+}
+
+.opts-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.opts-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px;
+  min-width: 15rem;
+  z-index: 60;
+}
+
+.opts-panel label {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  color: var(--muted);
+}
+
+.opts-panel select {
+  padding: 6px 8px;
+  border-radius: 8px;
+  color: var(--fg);
+  background: var(--bg);
+}
+
+.opts-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* At small widths the compact bar tightens the filter. */
+.dirbar.tb-card {
+  container-type: inline-size;
+}
+
+@container (max-width: 1150px) {
+  .tb-compact .tb-summary .seg-btn {
+    padding: 3px 8px;
+  }
+}
+
+/* Folder bar, like the file one: controls with a border, segmented filters, Refresh on the right. */
+.dir-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tb-card .seg {
+  box-sizing: border-box;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--bg);
+}
+
+.tb-card .seg-btn {
+  display: inline-flex;
+  align-items: center;
+}
+
+.opts-button.on {
+  background: color-mix(in srgb, var(--accent) 18%, var(--bg));
+  border-color: var(--accent);
+}
+
+.summary-row .name-filter {
+  box-sizing: border-box;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+/* Central column: the mark in a small label with a light background in its colour (≠ red, ≈ yellow, ≠ of different type teal); "=" stays grey and without a background. */
+.mark-badge {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 4px;
+  border-radius: 6px;
+  line-height: 1;
+}
+
+.dir-row.different .mark-badge,
+.dir-row.typeMismatch .mark-badge,
+.dir-preview .dir-mark.different .mark-badge,
+.dir-preview .dir-mark.minor .mark-badge,
+.dir-preview .dir-mark.failed .mark-badge {
+  background: color-mix(in srgb, currentColor 16%, transparent);
+}
+
+/* Folder summary: one pill per status, with the dot in its colour and the words (without a bar). */
+.dir-pills {
+  gap: 8px;
+}
+
+.dir-pills .stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-sizing: border-box;
+  height: 32px;
+  padding: 0 14px;
+  font-weight: 400;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.dir-pills .stat strong {
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.dir-pills .dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.dir-pills .stat.changed .dot {
+  background: var(--del-fg);
+}
+
+.dir-pills .stat.leftOnly .dot {
+  background: var(--orphan);
+}
+
+.dir-pills .stat.rightOnly .dot {
+  background: var(--orphan-r);
+}
+
+.dir-pills .stat.typeMismatch .dot {
+  background: var(--mismatch);
+}
+
+.dir-pills .stat.identical .dot {
+  background: var(--muted);
+}
+
+/* "Not compared" (only in the preview): empty dot, so it is not confused with the identical ones. */
+.dir-pills .stat.notCompared .dot {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--muted);
+}
+
+.dir-pills .stat.changed,
+.dir-pills .stat.leftOnly,
+.dir-pills .stat.rightOnly,
+.dir-pills .stat.typeMismatch,
+.dir-pills .stat.identical,
+.dir-pills .stat.notCompared {
+  background: var(--surface);
+}
+
+.dir-pills .stat-minor,
+.dir-pills .stat-minor strong {
+  color: var(--chg-fg);
+}
+
+/* Filter by name with the magnifier on the left. */
+.name-filter-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.name-filter-wrap svg {
+  position: absolute;
+  left: 10px;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.name-filter-wrap .name-filter {
+  padding-left: 32px;
+}
+
+/* The pills of the file summary: the shape is that of the folders, the dot has the colour of the rows in the file. */
+.file-pills .stat.changed .dot {
+  background: var(--chg-fg);
+}
+
+.file-pills .stat.leftOnly .dot {
+  background: var(--del-fg);
+}
+
+.file-pills .stat.rightOnly .dot {
+  background: var(--add-fg);
+}
+
+/* The folder pills do not take the text colours of the file ones (red, green, yellow): muted words. */
+.diff-summary.dir-pills .stat.changed,
+.diff-summary.dir-pills .stat.leftOnly,
+.diff-summary.dir-pills .stat.rightOnly,
+.diff-summary.dir-pills .stat.typeMismatch,
+.diff-summary.dir-pills .stat.identical,
+.diff-summary.dir-pills .stat.notCompared {
+  color: var(--muted);
+}
+
+/* Expand and Collapse in the folder bar: icon and text, like Refresh. */
+.dir-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Navigation between differences: arrows 28 px wide (32 tall), for a control that is not wider than its content. */
+.tb-card .diff-nav .tb-square {
+  width: 28px;
+}
+
+.dir-pills .scan-note {
+  color: var(--muted);
+  font-size: var(--fs-sm);
+}
+
+/* Compact folder bar: summary (dot and number) and filter by name inside the bar, before Refresh. */
+.tb-compact .tb-summary,
+.dirbar.tb-compact > .summary {
+  order: 1;
+}
+
+.dirbar.tb-compact > .summary {
+  margin-left: auto;
+}
+
+.dirbar.tb-compact > .name-filter-wrap {
+  order: 1;
+}
+
+.dirbar.tb-compact > .refresh-btn {
+  order: 2;
+}
+
+.tb-compact .dir-pills .stat {
+  padding: 0 10px;
+}
+
+.tb-compact .name-filter {
+  width: 10.5rem;
+}
+
+/*
+ * The status colour, decided here and nowhere else: every element that carries the class of a status
+ * (`statusClass()` in lib/tree.ts) takes `--c`, and then uses it as it likes (background, text, border).
+ */
+:is(.map-chip, .map-badge, .map-cell, .mp-icon, .mp-status, .mp-item, .dir-row).different,
+.st-different { --c: var(--del-fg); }
+:is(.map-chip, .map-badge, .map-cell, .mp-icon, .mp-status, .mp-item, .dir-row).minor,
+.st-minor { --c: var(--chg-fg); }
+:is(.map-chip, .map-badge, .map-cell, .mp-icon, .mp-status, .mp-item, .dir-row).leftOnly,
+.st-leftOnly { --c: var(--orphan); }
+:is(.map-chip, .map-badge, .map-cell, .mp-icon, .mp-status, .mp-item, .dir-row).rightOnly,
+.st-rightOnly { --c: var(--orphan-r); }
+:is(.map-chip, .map-badge, .map-cell, .mp-icon, .mp-status, .mp-item, .dir-row).typeMismatch,
+.st-typeMismatch { --c: var(--mismatch); }
+/* Not compared yet (the map of the preview): the neutral colour, no status. */
+:is(.map-chip, .map-badge, .map-cell, .mp-icon, .mp-status, .mp-item, .dir-row).notCompared,
+.st-notCompared { --c: var(--muted); }
+

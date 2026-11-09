@@ -1,0 +1,550 @@
+/* Toolbar of the folder screen. */
+.dirbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end; /* the navigation between differences is taller: the labels stay on the same line */
+  gap: 2px 6px;
+  padding: 8px 0 6px;
+  border-top: 1px solid var(--border); /* separates the addresses from the bar */
+}
+
+/* The summary row, below the box of the toolbar. */
+.toolbar.summary-row {
+  margin: 2px 0 6px;
+  padding: 4px 2px 8px;
+}
+
+/* Summary of the file comparison: three pills (modified, only on the left, only on the right). */
+.diff-summary {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+
+.diff-summary .stat {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Segmented control: a single choice among a few, all always visible. */
+.seg {
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.seg-btn {
+  padding: 3px 12px;
+  font-size: var(--fs);
+  color: inherit;
+  white-space: nowrap;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.seg-btn:hover:not(:disabled):not([aria-pressed="true"]) {
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.seg-btn[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  border-color: var(--accent);
+}
+
+.seg-btn svg {
+  vertical-align: -2px;
+  margin-right: 6px;
+}
+
+.seg-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* Line between two groups of a bar: at the middle of the bar's height, without pushing the others. */
+.tb-sep {
+  flex: none;
+  align-self: center;
+  width: 1px;
+  height: 28px;
+  margin: 0 2px;
+  background: var(--border);
+}
+
+.tb-group {
+  display: flex;
+  gap: 2px;
+}
+
+.tb-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  min-width: 40px;
+  padding: 3px 4px;
+  font-size: var(--fs-sm);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tb-btn:hover:not(:disabled) {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+.tb-btn[aria-pressed="true"],
+.tb-btn.on {
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  border-color: var(--accent);
+}
+
+/* Square toggles (¶, Aa): active like the buttons of the bar. */
+.tb-square[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  border-color: var(--accent);
+}
+
+/* Drop-down menus of the Options group: the chosen value and an arrow, as tall as the square buttons. */
+.opt-select {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 32px;
+  padding: 0 6px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.opt-select:hover:not(:has(select:disabled)) {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+.opt-select {
+  position: relative;
+}
+
+/* The real select covers the control and is transparent: the width is that of the value shown. */
+.opt-select select {
+  appearance: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.opt-value {
+  font-size: var(--fs);
+  white-space: nowrap;
+}
+
+.opt-select:has(select:disabled) {
+  opacity: 0.55;
+}
+
+.opt-chevron {
+  font-size: var(--fs-sm);
+  color: var(--muted);
+}
+
+.tb-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.tb-icon {
+  font-size: 1.1rem;
+  line-height: 1.2;
+  color: var(--accent); /* the same blue as the "Compare" button */
+}
+
+/* The hint always takes two lines: when its text changes the lists must not jump. */
+.dir-preview > .notice {
+  min-height: 2.6em;
+  line-height: 1.3;
+}
+
+/* Content of the folders before the comparison: a list with the two sides paired by name. */
+.preview-msg {
+  margin: 0 0 6px;
+  color: var(--muted);
+  line-height: 1.3;
+}
+
+.dir-preview .dir-mark {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* Marks of the in-place comparisons in the preview. */
+.dir-preview .dir-mark.different {
+  color: var(--del-fg);
+  font-weight: 700;
+}
+
+.dir-preview .dir-mark.minor {
+  color: var(--chg-fg);
+  font-weight: 700;
+}
+
+.dir-preview .dir-mark.identical {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.dir-preview .dir-mark.failed {
+  color: var(--del-fg);
+  font-weight: 700;
+}
+
+.minor-note,
+.approximate-note {
+  color: var(--chg-fg);
+}
+
+/* Editing a row directly in the pane. */
+.vrow input.line-edit {
+  flex: 1;
+  min-width: 0;
+  height: 18px;
+  margin: 0 1rem 0 0;
+  padding: 0 0.5rem;
+  font: inherit;
+  line-height: 18px;
+  background: var(--bg, #fff);
+  color: inherit;
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+  outline: none;
+}
+
+/* Selected row: a frame that crosses the two panes. */
+/* With a filter active: a dashed line marks where some rows were hidden. */
+.vrow.gap {
+  background-image: repeating-linear-gradient(90deg, var(--muted) 0 4px, transparent 4px 8px);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+.vrow.selected {
+  outline: 1px solid var(--accent);
+  outline-offset: -1px;
+}
+
+.vrow.selected .num {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+/* Panel with the selected row, one above the other: always present, of fixed height. */
+.linepanel {
+  flex: none;
+  height: 52px;
+  margin-top: 6px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: var(--mono);
+  font-size: var(--code-size, 13px);
+}
+
+.lp-body {
+  display: flex;
+  height: 100%;
+}
+
+.lp-scroll {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.lp-line {
+  display: flex;
+  align-items: center;
+  height: 25px;
+  width: max-content;
+  min-width: 100%;
+  line-height: 25px;
+  white-space: pre;
+  tab-size: 4;
+}
+
+.lp-line + .lp-line {
+  border-top: 1px solid var(--border);
+}
+
+.lp-label {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  flex: none;
+  display: flex;
+  gap: 6px;
+  width: 4.5rem;
+  padding: 0 0.5rem;
+  justify-content: flex-end;
+  color: var(--muted);
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  user-select: none;
+}
+
+.lp-arrow {
+  font-size: 0.7em;
+}
+
+.lp-text {
+  padding: 0 1rem 0 0.5rem;
+}
+
+.lp-line.chg {
+  background: var(--chg);
+}
+
+.lp-line.del {
+  background: var(--del);
+}
+
+.lp-line.add {
+  background: var(--add);
+}
+
+.lp-line .ie {
+  background: var(--chg-hi);
+  border-radius: 2px;
+  color: inherit;
+}
+
+.lp-line .eol {
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+.lp-empty {
+  margin: 0;
+  padding: 0 0.75rem;
+  line-height: 50px;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: var(--fs);
+}
+
+
+/* Copy of the text of a row, from the selected-row panel: a column to the right of the lines (like the one with the
+ * number on the left), which stays still while a long line scrolls under the bar. */
+.lp-copycol {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  width: 32px;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+}
+
+.lp-copycell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 25px;
+}
+
+.lp-copycell + .lp-copycell {
+  border-top: 1px solid var(--border);
+}
+
+.lp-copy {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.lp-copy:hover {
+  color: var(--fg);
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+  border-color: var(--border);
+}
+
+/* "Copied": a brief acknowledgement, at the bottom right of the view, which disappears by itself. */
+.copy-toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 50;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: var(--fg);
+  color: var(--bg);
+  font-size: var(--fs-sm);
+  pointer-events: none;
+}
+
+/* --- Search in the text of a side (Ctrl+F) --- */
+
+.searchbar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 6px;
+  padding: 6px 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+/* The dot of the side, as before the two paths. */
+.searchbar .sb-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  border-radius: 50%;
+}
+
+.searchbar .sb-dot.left {
+  background: var(--orphan);
+}
+
+.searchbar .sb-dot.right {
+  background: var(--orphan-r);
+}
+
+/* The field grows with the bar; the counter and the clear button are inside it, next to the text. */
+.search-field {
+  flex: 1;
+  min-width: 12rem;
+  max-width: 40rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.search-field:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.search-field.none {
+  border-color: var(--del-fg);
+}
+
+.search-field.none:focus-within {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--del-fg) 22%, transparent);
+}
+
+.search-field > svg {
+  flex: none;
+  color: var(--muted);
+}
+
+.search-field .search-input {
+  flex: 1;
+  min-width: 0;
+  width: auto;
+  height: 100%;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  outline: none;
+}
+
+.search-field .search-count {
+  flex: none;
+  min-width: 4.5rem;
+  color: var(--muted);
+  font-size: var(--fs);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.search-field.none .search-count {
+  color: var(--del-fg);
+}
+
+.search-clear {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.search-clear:hover {
+  color: var(--fg);
+}
+
+/* The two arrows together, in a box like the segmented controls. */
+.search-nav {
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.search-nav .tb-square {
+  width: 28px;
+  height: 28px;
+}
+
+.searchbar .search-close {
+  margin-left: auto;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+/* The matches in the text of the panes; the current one is stronger. */
+.vrow .find {
+  background: var(--find);
+  color: inherit;
+  border-radius: 2px;
+  outline: 1px solid var(--find-edge);
+  outline-offset: -1px;
+}
+
+.vrow .find.current {
+  background: var(--find-current);
+  outline: 2px solid var(--find-edge);
+  /* When it is brought into view, the numbers column (sticky on the left) and the copy buttons do not cover it. */
+  scroll-margin: 4px 7rem;
+}

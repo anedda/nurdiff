@@ -1,0 +1,19 @@
+/*
+ * The styles of the app, split by area in `styles/`. The order of the `@import`s is the one in which the rules
+ * override each other: the last ones win at equal specificity, so it must not be changed without testing.
+ */
+@import "./styles/00-tokens.css";  /* Typeface, colours and theme (light, dark, chosen by hand). */
+@import "./styles/10-layout-controls.css";  /* The app shell, the path fields, the top bar of the results, navigation and merge. */
+@import "./styles/20-file-viewer.css";  /* File comparison: the two virtualized panes, the rows, the overview bar. */
+@import "./styles/30-dir-list.css";  /* The folder comparison list and the dragging of files onto the window. */
+@import "./styles/40-tabs.css";  /* The tabs of the comparisons. */
+@import "./styles/50-home.css";  /* Home, choice of the kind of comparison, About. */
+@import "./styles/60-menus.css";  /* Menu bar, window edges, the "More filters" menu, manual alignment. */
+@import "./styles/70-dialogs.css";  /* Dialog windows. */
+@import "./styles/80-bars-line-panel.css";  /* Shared toolbars, summaries, segmented controls, row editing and the selected-row panel. */
+@import "./styles/90-sidebar.css";  /* Sidebar. */
+@import "./styles/A0-toolbar-restyle.css";  /* Toolbars of files and folders: look in a box, compact bar, summaries. */
+@import "./styles/B0-dir-map.css";  /* Map view of the folder comparison. */
+@import "./styles/B1-map-panel.css";  /* Detail panel of the map. */
+@import "./styles/C0-unified.css";  /* Unified views of files and folders. */
+@import "./styles/D0-merge.css";  /* Resolution of the conflicts of a file (git mergetool). */

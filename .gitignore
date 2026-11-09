@@ -1,0 +1,17 @@
+/target
+/dist
+/out
+/src-tauri/bundle-extra
+node_modules
+src-tauri/gen
+*.log
+.DS_Store
+/tools/ui-test/shots
+/tools/fixgen/target
+/tools/fixgen/Cargo.lock
+*.zip
+__pycache__
+
+# Working notes and documents, not published (the feature registry, the handover, the instructions for Claude)
+/dev-local/
+/CLAUDE.local.md
