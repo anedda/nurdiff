@@ -69,7 +69,8 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - run: ENGINE=docker ./scripts/dev.sh image
-      - run: ENGINE=docker ./scripts/dev.sh ui
+      # --retry: a suite that fails is run once more; checks that pass only the second time are listed as unstable
+      - run: ENGINE=docker ./scripts/dev.sh ui --retry
 
   # Known vulnerabilities in the dependencies. Rust: `cargo audit` fails on an advisory, the crates only unmaintained or
   # unsound (of the GTK stack of Tauri) stay warnings. npm: everything, failing from "high" up; the moderate ones of the

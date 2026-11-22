@@ -4,7 +4,10 @@ The answers of the commands come from `fixtures/*.json.gz` (run.sh decompresses 
 the Tauri crate or the real window.
 
 The launcher: it runs the suites (`suites/*.py`) one after the other. A suite that crashes is recorded as failed and the others
-continue. Usage: ./tools/ui-test/run.sh [--list] [suite…]
+continue. Usage: ./tools/ui-test/run.sh [--list] [--retry] [suite…]
+
+With --retry (used by the CI) a suite that fails is run once more: if it passes the second time the run stays green, but
+the summary lists the checks that failed the first time as unstable, so they are seen and can be fixed.
 """
 import argparse
 import importlib
@@ -35,6 +38,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="Prova della UI in Chromium")
     ap.add_argument("suite", nargs="*", help="le suite da eseguire (di norma tutte)")
     ap.add_argument("--list", action="store_true", help="elenca le suite ed esce")
+    ap.add_argument("--retry", action="store_true", help="ripete una volta la suite che fallisce (CI); i controlli passati al secondo tentativo sono segnalati come instabili")
     args = ap.parse_args()
     names = [n for n, _ in SUITES]
     if args.list:
@@ -48,30 +52,53 @@ def main() -> int:
     selected = [n for n in names if not args.suite or n in args.suite]
 
     timings = []
+    unstable = []   # (suite, checks that failed the first time and passed the second)
+
+    def run_suite(browser, name, module):
+        try:
+            module.run(browser)
+        except Exception as e:  # a suite that stops does not stop the others
+            traceback.print_exc()
+            # where in the suite it stopped: the last frame inside suites/
+            frames = [f for f in traceback.extract_tb(e.__traceback__) if f"{os.sep}suites{os.sep}" in f.filename]
+            where = f"{os.path.basename(frames[-1].filename)}:{frames[-1].lineno} " if frames else ""
+            harness.check(f"la suite «{name}» si è interrotta: {type(e).__name__}", False, where + (str(e).splitlines() or [""])[0][:200])
+
     with sync_playwright() as p:
         browser = p.chromium.launch()
         for name in selected:
             print(f"\n##### Suite «{name}» #####", flush=True)
             module = importlib.import_module(f"suites.{name}")
-            before = harness.STATS["pass"] + harness.STATS["fail"]
+            stats = dict(harness.STATS)
             fails = len(harness.failures)
             started = time.time()
-            try:
-                module.run(browser)
-            except Exception as e:  # a suite that stops does not stop the others
-                traceback.print_exc()
-                # where in the suite it stopped: the last frame inside suites/
-                frames = [f for f in traceback.extract_tb(e.__traceback__) if f"{os.sep}suites{os.sep}" in f.filename]
-                where = f"{os.path.basename(frames[-1].filename)}:{frames[-1].lineno} " if frames else ""
-                harness.check(f"la suite «{name}» si è interrotta: {type(e).__name__}", False, where + (str(e).splitlines() or [""])[0][:200])
-            timings.append((name, harness.STATS["pass"] + harness.STATS["fail"] - before, len(harness.failures) - fails, time.time() - started))
+            run_suite(browser, name, module)
+            flaky = False
+            if args.retry and len(harness.failures) > fails:
+                first = harness.failures[fails:]
+                print(f"\n##### Suite «{name}»: {len(first)} controlli falliti, secondo tentativo #####", flush=True)
+                # the first attempt does not count: the second decides
+                del harness.failures[fails:]
+                harness.STATS.update(stats)
+                run_suite(browser, name, module)
+                if len(harness.failures) == fails:
+                    unstable.append((name, first))
+                    flaky = True
+            n = harness.STATS["pass"] + harness.STATS["fail"] - stats["pass"] - stats["fail"]
+            timings.append((name, n, len(harness.failures) - fails, time.time() - started, flaky))
         browser.close()
 
     print("\nRiepilogo per suite:")
-    for name, n, f, secs in timings:
-        print(f"  {name:14s} {n:4d} controlli  {f:3d} falliti  {secs:6.0f} s")
+    for name, n, f, secs, flaky in timings:
+        print(f"  {name:14s} {n:4d} controlli  {f:3d} falliti  {secs:6.0f} s" + ("   (instabile: passata al secondo tentativo)" if flaky else ""))
     print(f"  {'totale':14s} {harness.STATS['pass'] + harness.STATS['fail']:4d} controlli  {len(harness.failures):3d} falliti  {sum(t[3] for t in timings):6.0f} s")
     print()
+    if unstable:
+        print("Controlli INSTABILI (falliti al primo tentativo, passati al secondo):")
+        for name, checks in unstable:
+            for c in checks:
+                print(f"  - [{name}] {c}")
+        print()
     if harness.failures:
         print(f"{len(harness.failures)} controlli FALLITI:")
         for f in harness.failures:

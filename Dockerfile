@@ -78,7 +78,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN rustup component add clippy rustfmt
 # The browsers live outside the home: in the container the user changes at every run
 ENV PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers
-RUN pip3 install --no-cache-dir playwright \
+# A fixed version: the CI builds this image at every run, and a new Playwright must not change the UI test unseen.
+RUN pip3 install --no-cache-dir playwright==1.65.2 \
     && playwright install --with-deps chromium \
     && rm -rf /var/lib/apt/lists/* \
     && chmod -R a+rX /opt/pw-browsers /usr/local/rustup

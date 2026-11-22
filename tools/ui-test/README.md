@@ -5,10 +5,11 @@ The test opens the UI in Chromium (Playwright) with Tauri's `invoke` bridge **si
 ## Usage
 
 ```bash
-pip install playwright && playwright install chromium   # once
+pip install playwright==1.65.2 && playwright install chromium   # once (the version of the Dockerfile)
 ./tools/ui-test/run.sh                                  # from the project root: the whole test
 ./tools/ui-test/run.sh --list                           # lists the suites
 ./tools/ui-test/run.sh sidebar dirs                     # only some suites
+./tools/ui-test/run.sh --retry                          # a failing suite runs once more; checks that pass the second time are listed as unstable (the CI uses it)
 ./scripts/dev.sh ui sidebar                             # the same, in a container
 ```
 
