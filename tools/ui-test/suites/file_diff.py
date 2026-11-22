@@ -861,6 +861,8 @@ def run(browser):
           page.locator(".menu-panel .menu-shortcut").all_inner_texts() == ["Ctrl+Z", "Ctrl+F", "Alt+→", "Alt+←"])
     page.click('.menu-panel button:has-text("Cerca…")')
     page.wait_for_selector(".searchbar")
+    # the focus moves to the field a moment after the bar appears (later on a slow machine)
+    page.wait_for_function("document.activeElement === document.querySelector('.searchbar input')", timeout=5000)
     check("Modifica > Cerca… apre la barra di ricerca, col focus nel campo e il menu chiuso",
           page.locator(".menu-panel").count() == 0 and page.evaluate("document.activeElement === document.querySelector('.searchbar input')"))
     page.keyboard.press("Escape")

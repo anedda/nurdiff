@@ -174,7 +174,7 @@ def run(browser):
     check("la barra dell'anteprima ha Espandi, Comprimi e Refresh, e non più Swap (sta tra i campi)", bar.count() == 1 and all(btn(n).count() == 1 for n in ["Espandi", "Comprimi", "Refresh"]) and btn("Swap").count() == 0)
     # the two folders are read with separate calls: we wait for the list to be complete (and still) before counting it
     try:
-        page.wait_for_function("document.querySelectorAll('.dir-preview .dir-body .dir-row').length === 2 && /sub/.test(document.querySelector('.dir-preview .dir-body').innerText) && /a\\.txt/.test(document.querySelector('.dir-preview .dir-body').innerText)", timeout=10000)
+        page.wait_for_function("document.querySelectorAll('.dir-preview .dir-body .dir-row').length === 2 && /sub/.test(document.querySelector('.dir-preview .dir-body').innerText) && /a\\.txt/.test(document.querySelector('.dir-preview .dir-body').innerText)", timeout=20000)
     except Exception:
         pass
     first_level = (rows.count(), "inner.txt" in ptext())

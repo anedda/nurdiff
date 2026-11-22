@@ -385,7 +385,7 @@ def check(name, ok, detail=""):
     print(("  PASS  " if ok else "  FAIL  ") + name + (f"   [{detail}]" if detail else ""))
     STATS["pass" if ok else "fail"] += 1
     if not ok:
-        failures.append(name)
+        failures.append(name + (f"   [{detail}]" if detail else ""))
 
 
 PANES = """
