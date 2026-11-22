@@ -8,6 +8,7 @@ continue. Usage: ./tools/ui-test/run.sh [--list] [suite…]
 """
 import argparse
 import importlib
+import os
 import sys
 import time
 import traceback
@@ -59,7 +60,10 @@ def main() -> int:
                 module.run(browser)
             except Exception as e:  # a suite that stops does not stop the others
                 traceback.print_exc()
-                harness.check(f"la suite «{name}» si è interrotta: {type(e).__name__}", False, (str(e).splitlines() or [""])[0][:200])
+                # where in the suite it stopped: the last frame inside suites/
+                frames = [f for f in traceback.extract_tb(e.__traceback__) if f"{os.sep}suites{os.sep}" in f.filename]
+                where = f"{os.path.basename(frames[-1].filename)}:{frames[-1].lineno} " if frames else ""
+                harness.check(f"la suite «{name}» si è interrotta: {type(e).__name__}", False, where + (str(e).splitlines() or [""])[0][:200])
             timings.append((name, harness.STATS["pass"] + harness.STATS["fail"] - before, len(harness.failures) - fails, time.time() - started))
         browser.close()
 

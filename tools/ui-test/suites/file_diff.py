@@ -547,7 +547,17 @@ def run(browser):
     page.keyboard.press("Escape")
     # a block of rows: select with the pointer in the left pane, a button next to "Copy" copies it to the right
     page.evaluate("window.getSelection().removeAllRanges()")
-    top = int(page.evaluate("document.querySelector('.pane.left').scrollTop") // 20) + 2   # rows really in view, not the overscan
+    # Four consecutive rows really in view (not the overscan): taken from the rows that are drawn now, not worked out from the scroll position,
+    # which on a slow machine (or at the end of the file) may not match what is drawn.
+    settled(page)
+    top = page.evaluate("""() => {
+        const p = document.querySelector('.pane.left'), pr = p.getBoundingClientRect();
+        const rows = [...p.querySelectorAll('.vrow')].filter(r => { const b = r.getBoundingClientRect(); return b.top >= pr.top + 4 && b.bottom <= pr.bottom - 24; })
+            .map(r => Number(r.dataset.row));
+        for (let i = 0; i + 3 < rows.length; i++) if (rows[i + 3] === rows[i] + 3) return rows[i];
+        return null;
+    }""")
+    assert top is not None, "no four consecutive rows in view in the left pane"
     lrow = lambda k: page.locator(f'.pane.left .vrow[data-row="{top + k}"]')
     page.evaluate("document.querySelectorAll('.pane').forEach(p => { p.scrollLeft = 0; })")
     drag = lambda r0, c0, r1, c1: (
