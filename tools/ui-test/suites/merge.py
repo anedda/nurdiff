@@ -59,7 +59,13 @@ def run(browser):
     page.wait_for_function("document.querySelector('.mg-status').textContent.startsWith('Resta 1')")
     check("il conflitto passa a «Remoto» e mostra il risultato; ne resta uno", cards.nth(0).locator(".mg-state").inner_text() == "Remoto"
           and cards.nth(0).locator(".mg-side.result .mg-code").inner_text() == "remoto A" and status() == "Resta 1 conflitto su 2", status())
-    check("la scheda segna il file come modificato (●)", "●" in page.locator(".doctab.active .doctab-label").inner_text())
+    # the tab gets the mark a moment after the conflict card (later on a slow machine)
+    try:
+        page.wait_for_function("(document.querySelector('.doctab.active .doctab-label')?.textContent || '').includes('●')", timeout=5000)
+    except Exception:
+        pass
+    check("la scheda segna il file come modificato (●)", "●" in page.locator(".doctab.active .doctab-label").inner_text(),
+          page.locator(".doctab.active .doctab-label").inner_text())
     check("dopo la scelta il conflitto seguente diventa quello corrente", cards.nth(1).get_attribute("class").find("current") >= 0)
 
     # custom text

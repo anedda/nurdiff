@@ -779,6 +779,11 @@ def run(browser):
     dirty = lambda i: page.locator(f".file-meta span:nth-child({i}) .dirty").count()
     btn("Applica a dx").click()
     page.wait_for_function("document.querySelectorAll('.file-meta .dirty').length === 1")
+    # the tab gets the mark a moment after the file header (one more step of state; later on a slow machine)
+    try:
+        page.wait_for_selector(".doctab.active .dirty", timeout=5000)
+    except Exception:
+        pass
     check("il tab segnala le modifiche non salvate", page.locator('.doctab.active .dirty').count() == 1)
     settled(page)
     c = calls_of("merge_hunk")
