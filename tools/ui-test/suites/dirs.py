@@ -153,9 +153,15 @@ def run(browser):
     mark = lambda: row37().locator(".dir-mark").inner_text().strip()
     n_tabs = page.locator(".doctab").count()
     # going back to the tab starts the re-comparison of the opened row: the button says "Comparing…" until it ends
-    # Both at once: the button also says "Confronta selezione" before the re-comparison starts, and on a slow machine it starts later.
-    page.wait_for_function("""() => document.querySelector('.tabpage:not([hidden]) .controls button.primary')?.textContent.trim() === 'Confronta selezione'
-        && [...document.querySelectorAll('.tabpage:not([hidden]) .dir-body .dir-row')].find(r => r.textContent.includes('f00037.txt'))?.querySelector('.dir-mark')?.textContent.trim() === '='""", timeout=10000)
+    # The button also says "Confronta selezione" before the re-comparison starts (on a slow machine it starts later), so a single reading proves
+    # nothing: wait until it has said so for 600 ms without a break.
+    page.evaluate("window.__stableSince = null")
+    page.wait_for_function("""() => {
+        const t = document.querySelector('.tabpage:not([hidden]) .controls button.primary')?.textContent.trim();
+        if (t !== 'Confronta selezione') { window.__stableSince = null; return false; }
+        if (window.__stableSince === null) window.__stableSince = performance.now();
+        return performance.now() - window.__stableSince > 600;
+    }""", timeout=15000)
     check("dopo il doppio clic la riga è ancora scelta: il pulsante è «Confronta selezione»", page.locator(".tabpage:not([hidden]) .controls button.primary").inner_text().strip() == "Confronta selezione", page.locator(".tabpage:not([hidden]) .controls button.primary").inner_text())
     check("tornati sul tab, la riga aperta da lì era già stata riconfrontata (il mock dà «uguali»)", mark() == "=", mark())
     page.evaluate("window.__recStatus = 'different'")

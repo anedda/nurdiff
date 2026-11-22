@@ -1,14 +1,42 @@
 version: 2
 updates:
+  # Rust: minor and patch updates arrive together in one pull request; a major update gets its own.
   - package-ecosystem: cargo
     directory: /
     schedule:
       interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      cargo-minor-patch:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
+
   - package-ecosystem: npm
     directory: /
     schedule:
       interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      npm-minor-patch:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
+    ignore:
+      # The types must match the Node version of the CI (22), not follow the latest major.
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
+      # Tied to the version of Vite in use: a new major goes with a deliberate upgrade of Vite.
+      - dependency-name: "@vitejs/plugin-react"
+        update-types: ["version-update:semver-major"]
+      # A new major can change the lint rules: upgrade it on purpose, not by a weekly pull request.
+      - dependency-name: "eslint-plugin-react-hooks"
+        update-types: ["version-update:semver-major"]
+
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      actions-minor-patch:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
