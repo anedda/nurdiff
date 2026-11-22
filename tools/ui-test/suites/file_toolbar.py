@@ -240,6 +240,11 @@ def run(browser):
     page.wait_for_function("window.__calls.some(c => c.cmd === 'set_row_filter')")
     check("«Differenze» chiede al core il filtro", calls_of("set_row_filter")[-1]["filter"] == "diffs", str(calls_of("set_row_filter")))
     page.wait_for_function("document.querySelector('.tabpage:not([hidden]) .summary-row .seg .seg-btn[aria-pressed=true]').textContent.includes('Differenze')")
+    # the counter goes back to "N differenze" a moment after the button is pressed (later on a slow machine)
+    try:
+        page.wait_for_function("(t) => (document.querySelector('.counter')?.getAttribute('aria-label') || '').includes(t)", arg=f"{n} differenze", timeout=5000)
+    except Exception:
+        pass
     check("il filtro attivo cambia e la vista riparte", f"{n} differenze" in counter(page), counter(page))
     rf("Con contesto").click()
     page.wait_for_function("window.__calls.filter(c => c.cmd === 'set_row_filter').length === 2")

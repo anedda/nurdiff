@@ -550,6 +550,14 @@ def run(browser):
     # Four consecutive rows really in view (not the overscan): taken from the rows that are drawn now, not worked out from the scroll position,
     # which on a slow machine (or at the end of the file) may not match what is drawn.
     settled(page)
+    # After the copies above the view can still move for a moment (later on a slow machine): wait until the left pane has kept the same
+    # scroll position for 600 ms, otherwise the rows chosen below can leave the drawn part before the drag.
+    page.evaluate("window.__lastTop = null")
+    page.wait_for_function("""() => {
+        const p = document.querySelector('.pane.left'), now = performance.now();
+        if (window.__lastTop !== p.scrollTop) { window.__lastTop = p.scrollTop; window.__topSince = now; return false; }
+        return now - window.__topSince > 600;
+    }""", timeout=15000)
     top = page.evaluate("""() => {
         const p = document.querySelector('.pane.left'), pr = p.getBoundingClientRect();
         const rows = [...p.querySelectorAll('.vrow')].filter(r => { const b = r.getBoundingClientRect(); return b.top >= pr.top + 4 && b.bottom <= pr.bottom - 24; })
@@ -561,9 +569,9 @@ def run(browser):
     lrow = lambda k: page.locator(f'.pane.left .vrow[data-row="{top + k}"]')
     page.evaluate("document.querySelectorAll('.pane').forEach(p => { p.scrollLeft = 0; })")
     drag = lambda r0, c0, r1, c1: (
-        page.mouse.move(pane_box["x"] + c0, lrow(r0).bounding_box()["y"] + 10),
+        page.mouse.move(pane_box["x"] + c0, lrow(r0).bounding_box(timeout=5000)["y"] + 10),
         page.mouse.down(),
-        page.mouse.move(pane_box["x"] + c1, lrow(r1).bounding_box()["y"] + 10, steps=8),
+        page.mouse.move(pane_box["x"] + c1, lrow(r1).bounding_box(timeout=5000)["y"] + 10, steps=8),
         page.mouse.up(),
     )
     pane_box = page.locator(".pane.left").bounding_box()
