@@ -1,4 +1,4 @@
-# NurDiff
+# <img src="app-icon.png" alt="" width="40" height="40" align="absmiddle"> NurDiff
 
 [![CI](https://github.com/anedda/nurdiff/actions/workflows/ci.yml/badge.svg)](https://github.com/anedda/nurdiff/actions/workflows/ci.yml)
 
@@ -14,7 +14,7 @@ Built with [Tauri 2](https://tauri.app), Rust, React and TypeScript.
 
 - **Files**: differences inside lines, three algorithms (Myers, Patience, Histogram), ignore case and whitespace, minor differences (line endings, encoding, trailing spaces) told apart from real ones, search (Ctrl+F), merge blocks from one side to the other and save.
 - **Folders**: byte-by-byte comparison with a tree, filters (including by extension) and a preview before comparing. Symbolic links are not followed. NurDiff does not copy, mirror or delete files.
-- **Archives**: `.zip`, `.jar`, `.apk`, `.epub`, `.tar`, `.tar.gz` and `.tgz` open like folders (read only), so two archives, or an archive and a folder, are compared file by file.
+- **Archives**: `.zip`, `.jar`, `.war`, `.ear`, `.apk`, `.epub`, `.tar`, `.tar.gz` and `.tgz` open like folders (read only), so two archives, or an archive and a folder, are compared file by file.
 - **Reports**: unified diff and HTML for files, HTML and CSV for folders.
 - Interface in English and Italian.
 

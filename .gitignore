@@ -1,6 +1,7 @@
 /target
 /dist
 /out
+/coverage
 /src-tauri/bundle-extra
 node_modules
 src-tauri/gen

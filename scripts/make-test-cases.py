@@ -311,6 +311,27 @@ archive_pair("11-archives/book.epub",
 archive_pair("11-archives/app.apk", zip_of([("AndroidManifest.xml", bytes(range(100))), ("classes.dex", b"dex\n035\0" + bytes(200)), ("META-INF/CERT.SF", "Signature-Version: 1.0\n")]),
              zip_of([("AndroidManifest.xml", bytes(range(100))), ("classes.dex", b"dex\n035\0" + bytes(300)), ("META-INF/CERT.SF", "Signature-Version: 1.0\nSHA-256-Digest: x\n")]),
              "apk: mostly binary entries", "classes.dex differs (binary); CERT.SF differs by one line")
+def zip_bytes(files):
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
+        for name, data in files:
+            z.writestr(zipfile.ZipInfo(name, DATE), data)
+    return buf.getvalue()
+
+
+def ear(war_title, descriptor):
+    return zip_of([("META-INF/application.xml", descriptor),
+                   ("web.war", zip_bytes([("WEB-INF/web.xml", "<web-app/>\n"), ("index.html", f"<h1>{war_title}</h1>\n")])),
+                   ("lib/util.jar", zip_bytes([("META-INF/MANIFEST.MF", "Manifest-Version: 1.0\n")]))])
+
+
+archive_pair("11-archives/app.ear", ear("Shop 1", "<application><display-name>shop</display-name></application>\n"),
+             ear("Shop 2", "<application><display-name>shop v2</display-name></application>\n"),
+             "ear with a war and a jar inside", "application.xml differs by one line; web.war and its copy differ at byte level; "
+             "open app.ear/web.war as a path to see index.html differ; lib/util.jar identical")
+archive_pair("11-archives/shop.war", zip_of([("WEB-INF/web.xml", "<web-app/>\n"), ("index.html", "<h1>Shop 1</h1>\n")]),
+             zip_of([("WEB-INF/web.xml", "<web-app/>\n"), ("index.html", "<h1>Shop 2</h1>\n")]),
+             "war: a web page changed", "index.html differs by one line; web.xml identical")
 archive_pair("11-archives/source.tar", tar_of(sample_files(1)), tar_of(sample_files(2)), "tar, version 1 against 2", "like release.zip")
 archive_pair("11-archives/source.tar.gz", tar_of(sample_files(1), gz=True), tar_of(sample_files(2), gz=True), "tar.gz, version 1 against 2", "like release.zip")
 archive_pair("11-archives/source.tgz", tar_of(sample_files(1), gz=True), tar_of(sample_files(1), gz=True), "tgz, identical", "everything identical")

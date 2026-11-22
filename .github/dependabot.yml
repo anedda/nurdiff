@@ -30,6 +30,23 @@ updates:
       # A new major can change the lint rules: upgrade it on purpose, not by a weekly pull request.
       - dependency-name: "eslint-plugin-react-hooks"
         update-types: ["version-update:semver-major"]
+      - dependency-name: "eslint"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@eslint/js"
+        update-types: ["version-update:semver-major"]
+      # React 19 is a deliberate migration (the hook tests are written for React 18), not a weekly pull request.
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react-dom"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react-test-renderer"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@types/react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@types/react-dom"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@types/react-test-renderer"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: github-actions
     directory: /

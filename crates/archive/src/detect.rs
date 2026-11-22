@@ -5,7 +5,7 @@ use std::path::Path;
 /// The kinds of archive NurDiff opens.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Kind {
-    /// `.zip` and the formats built on it: `.jar`, `.apk`, `.epub`.
+    /// `.zip` and the formats built on it: `.jar`, `.war`, `.ear`, `.apk`, `.epub`.
     Zip,
     /// `.tar`.
     Tar,
@@ -23,7 +23,7 @@ pub fn kind_of(path: &Path) -> Option<Kind> {
         Kind::TarGz
     } else if name.ends_with(".tar") {
         Kind::Tar
-    } else if [".zip", ".jar", ".apk", ".epub"]
+    } else if [".zip", ".jar", ".war", ".ear", ".apk", ".epub"]
         .iter()
         .any(|ext| name.ends_with(ext))
     {
@@ -67,6 +67,8 @@ mod tests {
         );
         assert_eq!(kind_of(&file(&d, "b.JAR", b"PK\x03\x04")), Some(Kind::Zip));
         assert_eq!(kind_of(&file(&d, "c.apk", b"PK\x03\x04")), Some(Kind::Zip));
+        assert_eq!(kind_of(&file(&d, "w.war", b"PK\x03\x04")), Some(Kind::Zip));
+        assert_eq!(kind_of(&file(&d, "e.EAR", b"PK\x03\x04")), Some(Kind::Zip));
         assert_eq!(kind_of(&file(&d, "d.epub", b"PK\x03\x04")), Some(Kind::Zip));
         assert_eq!(
             kind_of(&file(&d, "e.tgz", &[0x1f, 0x8b, 8])),
@@ -92,6 +94,12 @@ mod tests {
             "not in the list"
         );
         assert_eq!(kind_of(&file(&d, "plain.txt", b"PK\x03\x04")), None);
+        assert_eq!(kind_of(&file(&d, "fake.ear", b"just text\n")), None);
+        assert_eq!(
+            kind_of(&file(&d, "real.rar", b"Rar!\x1a\x07\x00")),
+            None,
+            "a RAR archive is not a zip, whatever the name"
+        );
         assert_eq!(kind_of(&d.path().join("missing.zip")), None);
         assert_eq!(kind_of(d.path()), None);
     }

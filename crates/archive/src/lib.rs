@@ -1,4 +1,4 @@
-//! Archives as folders: zip (and the zip-based `.jar`, `.apk`, `.epub`), `.tar`, `.tar.gz` and `.tgz`.
+//! Archives as folders: zip (and the zip-based `.jar`, `.war`, `.ear`, `.apk`, `.epub`), `.tar`, `.tar.gz` and `.tgz`.
 //!
 //! NurDiff compares folders, not archives. This crate extracts an archive into a temporary folder, read only as far as
 //! NurDiff is concerned, so that every comparison of folders and files works on it unchanged. The path of a file

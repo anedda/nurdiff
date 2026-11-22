@@ -120,6 +120,30 @@ fn an_archive_inside_an_archive_is_opened_one_level_at_a_time() {
 }
 
 #[test]
+fn a_war_inside_an_ear_is_opened_like_the_ear_itself() {
+    let d = tempfile::tempdir().unwrap();
+    let war = zip_with(
+        &d.path().join("web.war"),
+        &[Item::File("WEB-INF/web.xml", b"<web-app/>")],
+    );
+    let war_bytes = fs::read(&war).unwrap();
+    let ear = zip_with(
+        &d.path().join("app.ear"),
+        &[
+            Item::File("META-INF/application.xml", b"<application/>"),
+            Item::File("web.war", &war_bytes),
+        ],
+    );
+    let c = cache(&d);
+    let r = c.resolve(&ear, Want::Dir).unwrap();
+    assert!(r.path.join("META-INF/application.xml").is_file());
+    let inside = c
+        .resolve(&ear.join("web.war/WEB-INF/web.xml"), Want::File)
+        .unwrap();
+    assert_eq!(fs::read_to_string(inside.path).unwrap(), "<web-app/>");
+}
+
+#[test]
 fn skipped_entries_are_counted() {
     let d = tempfile::tempdir().unwrap();
     let z = zip_with(

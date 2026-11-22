@@ -1,7 +1,7 @@
 import type { PathKind } from "../types";
 
 /** Extensions of the archives NurDiff opens as folders (the same list as `kind_of` in `crates/archive`). */
-const ARCHIVE_EXTENSIONS = [".zip", ".jar", ".apk", ".epub", ".tar", ".tar.gz", ".tgz"];
+const ARCHIVE_EXTENSIONS = [".zip", ".jar", ".war", ".ear", ".apk", ".epub", ".tar", ".tar.gz", ".tgz"];
 
 /** The name of the path ends like an archive. Only a first filter: the core also looks inside the file. */
 export function looksLikeArchive(path: string): boolean {

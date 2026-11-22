@@ -3,7 +3,7 @@ import { bothAreFolders, looksLikeArchive } from "./archiveNames";
 
 describe("looksLikeArchive", () => {
   it("riconosce le estensioni degli archivi, anche in maiuscolo e dentro un altro archivio", () => {
-    for (const p of ["/a/b.zip", "C:\\x\\LIB.JAR", "app.apk", "book.epub", "s.tar", "s.tar.gz", "s.tgz", "/a/outer.zip/inner.zip"]) {
+    for (const p of ["/a/b.zip", "C:\\x\\LIB.JAR", "app.apk", "app.EAR", "site.war", "book.epub", "s.tar", "s.tar.gz", "s.tgz", "/a/outer.zip/inner.zip"]) {
       expect(looksLikeArchive(p), p).toBe(true);
     }
   });
